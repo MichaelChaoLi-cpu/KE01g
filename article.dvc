@@ -1,0 +1,6 @@
+outs:
+- md5: 2d9d39bdbb17294c799a383fff9446a2.dir
+  size: 2
+  nfiles: 2
+  hash: md5
+  path: article
