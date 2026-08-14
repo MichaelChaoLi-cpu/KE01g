@@ -174,35 +174,26 @@ def write_workbook(source: pd.DataFrame, summary: pd.DataFrame) -> None:
     sheet.sheet_view.zoomScale = 78
     sheet.append(list(HEADERS))
 
-    source_last_row = len(source) + 1
-    source_columns = {
-        "Shelters": "A",
-        "Evacuees": "D",
-        "Estimated Female Evacuees": "E",
-        "Estimated Functional-Support Evacuees": "F",
-        "Estimated Female Functional-Support Evacuees": "G",
-        "Temporary Toilets Installed": "H",
-        "Toilet Cars": "I",
-        "Prolonged Requirement": "J",
-        "Temporary-Toilet-Only Shortfall": "K",
-    }
+    summary_rows = summary.set_index(["Water Group", "Scenario English"])
     output_rows = [(water, scenario) for water in WATER_ORDER for scenario in SCENARIO_ORDER]
-    for row_number, (water, scenario) in enumerate(output_rows, start=2):
-        criteria = (
-            f"'Scenario Inputs'!$B$2:$B${source_last_row},$A{row_number},"
-            f"'Scenario Inputs'!$C$2:$C${source_last_row},$B{row_number}"
+    for water, scenario in output_rows:
+        row = summary_rows.loc[(water, scenario)]
+        sheet.append(
+            [
+                water,
+                scenario,
+                int(row["Shelters"]),
+                int(row["Evacuees"]),
+                float(row["Estimated_Female_Evacuees"]),
+                float(row["Estimated_Functional_Support_Evacuees"]),
+                float(row["Estimated_Female_Functional_Support_Evacuees"]),
+                int(row["Temporary_Toilets_Installed"]),
+                int(row["Toilet_Cars"]),
+                int(row["Prolonged_Requirement"]),
+                int(row["Temporary_Toilet_Only_Shortfall"]),
+                int(row["Shelters_with_Positive_Shortfall"]),
+            ]
         )
-        values: list[object] = [water, scenario]
-        values.append(f'=COUNTIFS({criteria})')
-        for header in HEADERS[3:11]:
-            column = source_columns[header]
-            values.append(
-                f"=SUMIFS('Scenario Inputs'!${column}$2:${column}${source_last_row},{criteria})"
-            )
-        values.append(
-            f'=COUNTIFS({criteria},\'Scenario Inputs\'!$K$2:$K${source_last_row},">0")'
-        )
-        sheet.append(values)
 
     last_row = sheet.max_row
     excel_table = Table(displayName="WaterEquityPressureSummary", ref=f"A1:L{last_row}")
@@ -385,8 +376,14 @@ def validate_output(summary: pd.DataFrame) -> None:
         for cell in row
         if isinstance(cell.value, str) and cell.value.startswith("=")
     )
-    if formula_count != 318:
+    if formula_count != 228:
         raise ValueError(f"Unexpected formula count: {formula_count}")
+    if any(
+        isinstance(cell.value, str) and cell.value.startswith("=")
+        for row in sheet.iter_rows()
+        for cell in row
+    ):
+        raise ValueError("The article-facing Water Pressure Summary must contain static values")
     japanese_cells = []
     for workbook_sheet in workbook.worksheets:
         for row in workbook_sheet.iter_rows():

@@ -206,51 +206,62 @@ def write_workbook(table: pd.DataFrame) -> None:
     sheet.freeze_panes = "B2"
     sheet.sheet_view.zoomScale = 90
     sheet.append(list(MAIN_HEADERS))
-    metric_formulas = (
+    scenario_rows = [row for _, row in table.iterrows()]
+    metric_values = (
         (
             "Mobility Rule",
-            [f"='Full Scenario Record'!B{source_row}" for source_row in range(2, 5)],
+            [row["Mobility Rule"] for row in scenario_rows],
         ),
         (
             "Resource Movement\n(Eligible / Transferred Units)",
             [
-                f'=TEXT(\'Full Scenario Record\'!C{source_row},"0")&" / "&TEXT(\'Full Scenario Record\'!D{source_row},"0")'
-                for source_row in range(2, 5)
+                f"{int(row['Eligible Donor Units'])} / {int(row['Transferred Units'])}"
+                for row in scenario_rows
             ],
         ),
         (
             "Recipient Outcomes\n(Received Units / Still Short)",
             [
-                f'=TEXT(\'Full Scenario Record\'!E{source_row},"0")&" / "&TEXT(\'Full Scenario Record\'!G{source_row},"0")'
-                for source_row in range(2, 5)
+                f"{int(row['Recipient Shelters Served'])} / {int(row['Shelters with Residual Shortfall'])}"
+                for row in scenario_rows
             ],
         ),
         (
             "Residual Shortfall (Units)",
-            [f"='Full Scenario Record'!F{source_row}" for source_row in range(2, 5)],
+            [int(row["Residual Screening Shortfall"]) for row in scenario_rows],
         ),
         (
             "Resolved-Site Demand Coverage\n(Evacuees / Functional Support / Female Functional Support)",
-            [f"='Full Scenario Record'!H{source_row}" for source_row in range(2, 5)],
+            [
+                row[
+                    "Resolved-Site Demand Coverage (Evacuees / Functional Support / Female Functional Support)"
+                ]
+                for row in scenario_rows
+            ],
         ),
         (
             "Unresolved-Site Demand\n(Evacuees / Functional Support / Female Functional Support)",
-            [f"='Full Scenario Record'!I{source_row}" for source_row in range(2, 5)],
+            [
+                row[
+                    "Unresolved-Site Demand (Evacuees / Functional Support / Female Functional Support)"
+                ]
+                for row in scenario_rows
+            ],
         ),
         (
             "Transfer Distance\n(Mean / Maximum km)",
             [
-                f'=TEXT(\'Full Scenario Record\'!J{source_row},"0.00")&" / "&TEXT(\'Full Scenario Record\'!K{source_row},"0.00")'
-                for source_row in range(2, 5)
+                f"{float(row['Mean Transfer Distance (km)']):.2f} / {float(row['Maximum Transfer Distance (km)']):.2f}"
+                for row in scenario_rows
             ],
         ),
         (
             "Interpretation Boundary",
-            [f"='Full Scenario Record'!L{source_row}" for source_row in range(2, 5)],
+            [row["Interpretation Boundary"] for row in scenario_rows],
         ),
     )
-    for metric, formulas in metric_formulas:
-        sheet.append([metric, *formulas])
+    for metric, values in metric_values:
+        sheet.append([metric, *values])
     add_table_style(sheet, "CompactScenarioPerformance", "A1:D9")
 
     navy = "27445C"
@@ -386,7 +397,7 @@ def validate_output(table: pd.DataFrame) -> None:
         for cell in row
         if isinstance(cell.value, str) and cell.value.startswith("=")
     ]
-    if len(formulas) != 24:
+    if len(formulas) != 0:
         raise ValueError(f"Unexpected formula count: {len(formulas)}")
     japanese_cells = [
         f"{worksheet.title}!{cell.coordinate}"

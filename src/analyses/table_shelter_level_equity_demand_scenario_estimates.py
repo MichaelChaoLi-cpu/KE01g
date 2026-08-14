@@ -271,6 +271,9 @@ def write_workbook(inputs_frame: pd.DataFrame) -> None:
         input_rows[
             (str(row["Stable Shelter ID"]), str(row["Scenario"]))
         ] = excel_row
+    scenario_values = inputs_frame.assign(
+        Scenario=inputs_frame["Scenario"].astype(str)
+    ).set_index(["Stable Shelter ID", "Scenario"])
 
     full_shelter_order = (
         inputs_frame.loc[inputs_frame["Scenario"].astype(str).eq("base")]
@@ -298,11 +301,11 @@ def write_workbook(inputs_frame: pd.DataFrame) -> None:
         "熊本市": 10,
     }:
         raise ValueError("Expected the ten highest Base-demand shelters in each city")
-    for output_row, (_, row) in enumerate(shelter_order.iterrows(), start=2):
+    for _, row in shelter_order.iterrows():
         shelter_id = str(row["Stable Shelter ID"])
-        low_row = input_rows[(shelter_id, "low")]
-        base_row = input_rows[(shelter_id, "base")]
-        high_row = input_rows[(shelter_id, "high")]
+        low = scenario_values.loc[(shelter_id, "low")]
+        base = scenario_values.loc[(shelter_id, "base")]
+        high = scenario_values.loc[(shelter_id, "high")]
         area_value = row["District"] if pd.notna(row["District"]) else row["Ward"]
         sheet.append(
             [
@@ -311,15 +314,29 @@ def write_workbook(inputs_frame: pd.DataFrame) -> None:
                 ENGLISH_SHELTER_NAMES[shelter_id],
                 AREA_LABELS[str(area_value)],
                 int(row["Evacuees"]),
-                f"='Scenario Inputs'!H{base_row}",
-                f"='Scenario Inputs'!I{low_row}",
-                f"='Scenario Inputs'!I{base_row}",
-                f"='Scenario Inputs'!I{high_row}",
-                f"='Scenario Inputs'!J{low_row}",
-                f"='Scenario Inputs'!J{base_row}",
-                f"='Scenario Inputs'!J{high_row}",
-                f"='Scenario Inputs'!K{low_row}&\" / \"&'Scenario Inputs'!K{base_row}&\" / \"&'Scenario Inputs'!K{high_row}",
-                f"='Scenario Inputs'!L{low_row}&\" / \"&'Scenario Inputs'!L{base_row}&\" / \"&'Scenario Inputs'!L{high_row}",
+                float(base["Estimated Female Evacuees"]),
+                float(low["Estimated Functional Support Evacuees"]),
+                float(base["Estimated Functional Support Evacuees"]),
+                float(high["Estimated Functional Support Evacuees"]),
+                float(low["Estimated Female Functional Support Evacuees"]),
+                float(base["Estimated Female Functional Support Evacuees"]),
+                float(high["Estimated Female Functional Support Evacuees"]),
+                " / ".join(
+                    str(int(value))
+                    for value in (
+                        low["Initial Accessible Unit Parity Screen"],
+                        base["Initial Accessible Unit Parity Screen"],
+                        high["Initial Accessible Unit Parity Screen"],
+                    )
+                ),
+                " / ".join(
+                    str(int(value))
+                    for value in (
+                        low["Prolonged Accessible Unit Parity Screen"],
+                        base["Prolonged Accessible Unit Parity Screen"],
+                        high["Prolonged Accessible Unit Parity Screen"],
+                    )
+                ),
                 LOCATION_LABELS[str(row["Location Resolution"])],
             ]
         )
@@ -601,10 +618,12 @@ def verify_workbook() -> None:
         raise ValueError(f"Unexpected summary dimensions: {sheet.max_row} x {sheet.max_column}")
     if tuple(cell.value for cell in sheet[1]) != HEADERS:
         raise ValueError("Summary headers do not match the planned 15-column table")
-    if not all(str(sheet.cell(row=row, column=6).value).startswith("='Scenario Inputs'!") for row in range(2, 22)):
-        raise ValueError("Estimated female demand is not linked to Scenario Inputs")
-    if not all(str(sheet.cell(row=row, column=13).value).startswith("='Scenario Inputs'!") for row in range(2, 22)):
-        raise ValueError("Accessible-parity scenario vectors are not formula-linked")
+    if any(
+        isinstance(cell.value, str) and cell.value.startswith("=")
+        for row in sheet.iter_rows()
+        for cell in row
+    ):
+        raise ValueError("The article-facing Equity Demand Summary must contain static values")
     if {
         city: sum(sheet.cell(row=row, column=2).value == city for row in range(2, 22))
         for city in MUNICIPALITY_LABELS.values()

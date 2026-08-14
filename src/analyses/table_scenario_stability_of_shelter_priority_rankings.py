@@ -197,11 +197,8 @@ def write_workbook(table: pd.DataFrame, ranking: pd.DataFrame) -> None:
     sheet.sheet_view.zoomScale = 85
     sheet.append(list(HEADERS))
 
-    for index, row in table.iterrows():
-        values = row.tolist()
-        excel_row = index + 2
-        values[8] = f"=MAX(F{excel_row}:H{excel_row})-MIN(F{excel_row}:H{excel_row})"
-        sheet.append(values)
+    for _, row in table.iterrows():
+        sheet.append(row.tolist())
 
     last_row = sheet.max_row
     excel_table = Table(displayName="ShelterRankingStability", ref=f"A1:J{last_row}")
@@ -346,8 +343,8 @@ def validate_output(table: pd.DataFrame) -> None:
         for cell in row
         if isinstance(cell.value, str) and cell.value.startswith("=")
     )
-    if formula_count != 53:
-        raise ValueError("Expected one rank-span formula per shelter")
+    if formula_count != 0:
+        raise ValueError("The article-facing Ranking Stability sheet must contain static values")
     japanese_cells = []
     for workbook_sheet in workbook.worksheets:
         for row in workbook_sheet.iter_rows():

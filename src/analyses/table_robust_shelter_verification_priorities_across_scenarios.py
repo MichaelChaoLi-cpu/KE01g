@@ -272,17 +272,8 @@ def write_workbook(table: pd.DataFrame, ranking: pd.DataFrame) -> None:
     sheet.append(list(HEADERS))
 
     input_order = ranking.sort_values("Stable Shelter ID").reset_index(drop=True)
-    input_row_by_id = {
-        shelter_id: row_number
-        for row_number, shelter_id in enumerate(input_order["Stable Shelter ID"], start=2)
-    }
-    top_ids = ranking.head(15)["Stable Shelter ID"].tolist()
-    for row_number, ((_, row), shelter_id) in enumerate(
-        zip(table.iterrows(), top_ids, strict=True), start=2
-    ):
-        values = row.tolist()
-        values[13] = f"='Ranking Inputs'!N{input_row_by_id[shelter_id]}"
-        sheet.append(values)
+    for _, row in table.iterrows():
+        sheet.append(row.tolist())
 
     last_row = sheet.max_row
     table_range = f"A1:N{last_row}"
@@ -574,8 +565,16 @@ def verify_workbook(expected: pd.DataFrame) -> None:
         raise ValueError(f"Unexpected main-table dimensions: {sheet.max_row} x {sheet.max_column}")
     if tuple(cell.value for cell in sheet[1]) != HEADERS:
         raise ValueError("Main-table headers do not match the planned 14-column table")
-    if not all(str(sheet.cell(row=row, column=14).value).startswith("='Ranking Inputs'!") for row in range(2, 17)):
-        raise ValueError("Worst-scenario ranks are not linked to Ranking Inputs")
+    if any(
+        isinstance(cell.value, str) and cell.value.startswith("=")
+        for row in sheet.iter_rows()
+        for cell in row
+    ):
+        raise ValueError("The article-facing Robust Priorities sheet must contain static values")
+    if [sheet.cell(row=row, column=14).value for row in range(2, 17)] != expected[
+        "Worst-Scenario Rank"
+    ].tolist():
+        raise ValueError("Worst-scenario ranks changed in the main table")
     inputs = workbook["Ranking Inputs"]
     if inputs.max_row != 54 or inputs.max_column != 16:
         raise ValueError("Ranking Inputs must contain 53 shelters and 16 columns")

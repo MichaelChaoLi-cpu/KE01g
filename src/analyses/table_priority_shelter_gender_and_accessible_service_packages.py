@@ -134,33 +134,27 @@ def write_workbook(table: pd.DataFrame) -> None:
     sheet.freeze_panes = "B2"
     sheet.sheet_view.zoomScale = 88
     sheet.append(list(MAIN_HEADERS))
-    for row_number, (_, row) in enumerate(table.iterrows(), start=2):
+    for _, row in table.iterrows():
         sheet.append(
             [
                 row.iloc[0],
-                f"='Full Service Package Record'!B{row_number}",
+                int(row["Evacuees"]),
                 (
-                    f'=TEXT(\'Full Service Package Record\'!C{row_number},"0.0")&" / "&'
-                    f'TEXT(\'Full Service Package Record\'!D{row_number},"0.0")&" / "&'
-                    f'TEXT(\'Full Service Package Record\'!E{row_number},"0.0")'
+                    f"{float(row['Estimated Female Evacuees']):.1f} / "
+                    f"{float(row['Estimated Functional-Support Evacuees']):.1f} / "
+                    f"{float(row['Estimated Female Functional-Support Evacuees']):.1f}"
                 ),
                 (
-                    f'=TEXT(\'Full Service Package Record\'!F{row_number},"0")&" / "&'
-                    f'TEXT(\'Full Service Package Record\'!G{row_number},"0")&" / "&'
-                    f'TEXT(\'Full Service Package Record\'!H{row_number},"0")'
+                    f"{int(row['Proposed General-Unit Addition'])} / "
+                    f"{int(row['Women Planning Designation'])} / "
+                    f"{int(row['Men Planning Designation'])}"
                 ),
-                f"='Full Service Package Record'!I{row_number}",
-                (
-                    f'=\'Full Service Package Record\'!J{row_number}&" / "&'
-                    f'TEXT(\'Full Service Package Record\'!K{row_number},"0")'
-                ),
-                f"='Full Service Package Record'!L{row_number}",
-                (
-                    f'=\'Full Service Package Record\'!M{row_number}&" / "&'
-                    f"'Full Service Package Record'!N{row_number}"
-                ),
-                f"='Full Service Package Record'!O{row_number}",
-                f"='Full Service Package Record'!P{row_number}",
+                int(row["Accessible Unit Parity Screen"]),
+                f"{row['Water Status']} / {int(row['Toilet Cars'])}",
+                row["Containment or Collection Action"],
+                f"{row['Lighting and Locking Action']} / {row['Handwashing Action']}",
+                row["Menstrual-Waste Action"],
+                row["Accessible-Route Action"],
             ]
         )
 
@@ -341,8 +335,14 @@ def validate_output(table: pd.DataFrame) -> None:
         for cell in row
         if isinstance(cell.value, str) and cell.value.startswith("=")
     ]
-    if len(formulas) != 121:
+    if len(formulas) != 22:
         raise ValueError(f"Unexpected formula count: {len(formulas)}")
+    if any(
+        isinstance(cell.value, str) and cell.value.startswith("=")
+        for row in sheet.iter_rows()
+        for cell in row
+    ):
+        raise ValueError("The article-facing Service Packages sheet must contain static values")
     japanese_cells = []
     for workbook_sheet in workbook.worksheets:
         for row in workbook_sheet.iter_rows():

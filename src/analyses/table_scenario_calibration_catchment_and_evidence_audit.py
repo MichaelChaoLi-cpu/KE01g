@@ -272,12 +272,8 @@ def write_workbook(audit: pd.DataFrame) -> None:
     sheet.freeze_panes = "B2"
     sheet.sheet_view.zoomScale = 72
     sheet.append(list(HEADERS))
-    for row_number, (_, row) in enumerate(audit.iterrows(), start=2):
-        values: list[object] = [row["Audit Component"]]
-        for column_index in range(2, 13):
-            input_column = chr(ord("A") + column_index - 1)
-            values.append(f"='Audit Inputs'!{input_column}{row_number}")
-        sheet.append(values)
+    for _, row in audit.iterrows():
+        sheet.append(row.tolist())
 
     last_row = sheet.max_row
     excel_table = Table(displayName="ScenarioCalibrationAudit", ref=f"A1:L{last_row}")
@@ -427,7 +423,7 @@ def validate_output(audit: pd.DataFrame) -> None:
         for cell in row
         if isinstance(cell.value, str) and cell.value.startswith("=")
     ]
-    if len(formulas) != 121:
+    if len(formulas) != 0:
         raise ValueError(f"Unexpected formula count: {len(formulas)}")
     japanese_cells = []
     for workbook_sheet in workbook.worksheets:

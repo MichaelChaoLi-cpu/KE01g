@@ -220,31 +220,29 @@ def write_workbook(plan: pd.DataFrame, flows: pd.DataFrame) -> None:
     sheet.freeze_panes = "D2"
     sheet.sheet_view.zoomScale = 80
     sheet.append(list(MAIN_HEADERS))
-    for row_number, (_, row) in enumerate(plan.iterrows(), start=2):
+    for _, row in plan.iterrows():
+        transfer_action = int(row["Proposed Transfer In"]) - int(
+            row["Proposed Transfer Out"]
+        )
+        transfer_links = (
+            "N/A"
+            if row["Transfer Partners (Units)"] == "N/A"
+            else f"{row['Transfer Partners (Units)']}; {row['Transfer Distance (km)']} km"
+        )
         sheet.append(
             [
                 row["Stable Shelter ID"],
-                f"='Full Rebalancing Record'!B{row_number}",
-                f"='Full Rebalancing Record'!C{row_number}",
-                f"='Full Rebalancing Record'!D{row_number}",
-                f"='Full Rebalancing Record'!E{row_number}",
-                (
-                    f'=TEXT(\'Full Rebalancing Record\'!F{row_number},"0")&" / "&'
-                    f'TEXT(\'Full Rebalancing Record\'!G{row_number},"0")'
-                ),
-                f"='Full Rebalancing Record'!H{row_number}",
-                f"='Full Rebalancing Record'!I{row_number}",
-                (
-                    f"='Full Rebalancing Record'!K{row_number}-"
-                    f"'Full Rebalancing Record'!L{row_number}"
-                ),
-                (
-                    f'=IF(\'Full Rebalancing Record\'!M{row_number}="N/A","N/A",'
-                    f'\'Full Rebalancing Record\'!M{row_number}&"; "&'
-                    f'\'Full Rebalancing Record\'!N{row_number}&" km")'
-                ),
-                f"='Full Rebalancing Record'!O{row_number}",
-                f"='Full Rebalancing Record'!R{row_number}",
+                row["Shelter Name"],
+                row["Area"],
+                int(row["Evacuees"]),
+                row["Water Status"],
+                f"{int(row['Temporary Toilets Installed'])} / {int(row['Toilet Cars'])}",
+                int(row["Prolonged Requirement"]),
+                int(row["Current Balance (+ Need / - Surplus)"]),
+                transfer_action,
+                transfer_links,
+                int(row["Post-Transfer Inventory"]),
+                row["Location Resolution"],
             ]
         )
 
@@ -438,8 +436,14 @@ def validate_output(plan: pd.DataFrame, flows: pd.DataFrame) -> None:
         for cell in row
         if isinstance(cell.value, str) and cell.value.startswith("=")
     ]
-    if len(formulas) != 494:
+    if len(formulas) != 76:
         raise ValueError(f"Unexpected formula count: {len(formulas)}")
+    if any(
+        isinstance(cell.value, str) and cell.value.startswith("=")
+        for row in sheet.iter_rows()
+        for cell in row
+    ):
+        raise ValueError("The article-facing Rebalancing Plan must contain static values")
     japanese_cells = []
     for workbook_sheet in workbook.worksheets:
         for row in workbook_sheet.iter_rows():

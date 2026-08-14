@@ -175,10 +175,20 @@ def write_workbook(table: pd.DataFrame) -> None:
                 float(row["Municipality Estimated Female Evacuees"]),
                 float(row["Municipality Estimated Functional Support Evacuees"]),
                 float(row["Municipality Estimated Female Functional Support Evacuees"]),
-                f"=ROUNDUP(D{row_number}/50,0)",
-                f"=ROUNDUP(D{row_number}/20,0)",
-                f"=ROUNDUP(F{row_number}/50,0)",
-                f"=ROUNDUP(F{row_number}/20,0)",
+                int(np.ceil(float(row["Evacuees"]) / 50)),
+                int(np.ceil(float(row["Evacuees"]) / 20)),
+                int(
+                    np.ceil(
+                        float(row["Municipality Estimated Functional Support Evacuees"])
+                        / 50
+                    )
+                ),
+                int(
+                    np.ceil(
+                        float(row["Municipality Estimated Functional Support Evacuees"])
+                        / 20
+                    )
+                ),
                 observation_times.iloc[row_number - 2].strftime("%Y-%m-%d %H:%M JST"),
                 str(row["Municipality Evidence Tier"]),
             ]
@@ -261,8 +271,8 @@ def write_workbook(table: pd.DataFrame) -> None:
         sheet.column_dimensions[column].width = width
 
     formula_comments = {
-        "H1": "Formula: ceiling of observed evacuees divided by 50.",
-        "I1": "Formula: ceiling of observed evacuees divided by 20.",
+        "H1": "Calculation: ceiling of observed evacuees divided by 50.",
+        "I1": "Calculation: ceiling of observed evacuees divided by 20.",
         "J1": (
             "Sensitivity screen: ceiling of estimated functional-support evacuees "
             "divided by 50; not an official accessible-toilet requirement."
@@ -362,8 +372,14 @@ def verify_workbook(expected: pd.DataFrame) -> None:
     observed_headers = tuple(cell.value for cell in sheet[1])
     if observed_headers != HEADERS:
         raise ValueError("Workbook headers do not match the planned 14-column table")
-    if sheet["H2"].value != "=ROUNDUP(D2/50,0)" or sheet["K34"].value != "=ROUNDUP(F34/20,0)":
-        raise ValueError("Requirement or accessible-parity formulas are missing")
+    formulas = [
+        cell
+        for row in sheet.iter_rows()
+        for cell in row
+        if isinstance(cell.value, str) and cell.value.startswith("=")
+    ]
+    if formulas:
+        raise ValueError("The article-facing Municipality Summary must contain static values")
     values = list(sheet.values)[1:]
     if len(values) != len(expected):
         raise ValueError("Workbook data-row count does not match the validated table")

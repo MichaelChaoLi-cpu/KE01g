@@ -273,10 +273,8 @@ def write_workbook(table: pd.DataFrame, audit_inputs: pd.DataFrame) -> None:
     sheet.sheet_view.zoomScale = 70
     sheet.append(list(HEADERS))
 
-    for row_number, (_, row) in enumerate(table.iterrows(), start=2):
-        values = row.tolist()
-        values[10] = f"='Audit Inputs'!Z{row_number}"
-        sheet.append(values)
+    for _, row in table.iterrows():
+        sheet.append(row.tolist())
 
     last_row = sheet.max_row
     table_range = f"A1:O{last_row}"
@@ -377,7 +375,7 @@ def write_workbook(table: pd.DataFrame, audit_inputs: pd.DataFrame) -> None:
         sheet.column_dimensions[column].width = width
 
     sheet["K1"].comment = Comment(
-        "Formula-linked to Audit Inputs. Exact requires male plus female to equal "
+        "Validated against Audit Inputs. Exact requires male plus female to equal "
         "the published total for Support Levels 1-2, Care Levels 1-5, and the "
         "Certified Total in every municipality.",
         "Mike Li",
@@ -519,8 +517,16 @@ def verify_workbook(expected: pd.DataFrame) -> None:
         raise ValueError(f"Unexpected main-table dimensions: {sheet.max_row} x {sheet.max_column}")
     if tuple(cell.value for cell in sheet[1]) != HEADERS:
         raise ValueError("Main-table headers do not match the planned 15-column audit")
-    if not all(str(sheet.cell(row=row, column=11).value).startswith("='Audit Inputs'!") for row in range(2, 13)):
-        raise ValueError("Certification reconciliation is not formula-linked")
+    if any(
+        isinstance(cell.value, str) and cell.value.startswith("=")
+        for row in sheet.iter_rows()
+        for cell in row
+    ):
+        raise ValueError("The article-facing Coverage Audit must contain static values")
+    if [sheet.cell(row=row, column=11).value for row in range(2, 13)] != expected[
+        "Certification Sex Reconciliation Status"
+    ].tolist():
+        raise ValueError("Certification reconciliation values changed in the main table")
     if sum(sheet.cell(row=row, column=3).value for row in range(2, 13)) != 81:
         raise ValueError("Workbook does not reproduce 81 open shelters")
     if sum(sheet.cell(row=row, column=4).value for row in range(2, 13)) != 3585:

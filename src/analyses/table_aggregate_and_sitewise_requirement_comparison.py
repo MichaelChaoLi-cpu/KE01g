@@ -138,38 +138,26 @@ def write_workbook(base: pd.DataFrame, comparison: pd.DataFrame) -> None:
     sheet.sheet_view.zoomScale = 90
     sheet.append(list(HEADERS))
 
-    municipality_rows = {
-        city: [
-            index
-            for index, value in enumerate(base["Municipality English"], start=2)
-            if value == city
-        ]
-        for city in MUNICIPALITY_LABELS.values()
-    }
-
-    for row_number, (_, row) in enumerate(comparison.iterrows(), start=2):
+    for _, row in comparison.iterrows():
         city = str(row["Municipality"])
         benchmark = str(row["Toilet Benchmark"])
-        denominator = 50 if "50" in benchmark else 20
-        requirement_column = "E" if denominator == 50 else "F"
-        input_city_start = min(municipality_rows[city])
-        input_city_end = max(municipality_rows[city])
+        coverage = int(row["Deployment Coverage"])
+        reported = (
+            f"NR (0/{int(row['Open Shelters'])})"
+            if coverage == 0
+            else f"{int(row['Reported Temporary Toilets'])} ({coverage}/{int(row['Open Shelters'])})"
+        )
         sheet.append(
             [
                 city,
                 benchmark,
-                f'=COUNTIF(\'Shelter Inputs\'!$B$2:$B$54,A{row_number})',
-                f'=SUMIF(\'Shelter Inputs\'!$B$2:$B$54,A{row_number},\'Shelter Inputs\'!$C$2:$C$54)',
-                f"=ROUNDUP(D{row_number}/{denominator},0)",
-                f"=SUM('Shelter Inputs'!{requirement_column}{input_city_start}:{requirement_column}{input_city_end})",
-                f"=F{row_number}-E{row_number}",
-                f"=G{row_number}/E{row_number}",
-                (
-                    f'=IF(COUNT(\'Shelter Inputs\'!$D${input_city_start}:$D${input_city_end})=0,'
-                    f'"NR (0/"&C{row_number}&")",'
-                    f'SUM(\'Shelter Inputs\'!$D${input_city_start}:$D${input_city_end})&" ("&'
-                    f'COUNT(\'Shelter Inputs\'!$D${input_city_start}:$D${input_city_end})&"/"&C{row_number}&")")'
-                ),
+                int(row["Open Shelters"]),
+                int(row["Evacuees"]),
+                int(row["Pooled Requirement"]),
+                int(row["Summed Sitewise Requirement"]),
+                int(row["Fragmentation Increment"]),
+                float(row["Fragmentation Increment (%)"]) / 100,
+                reported,
             ]
         )
 
@@ -327,8 +315,14 @@ def validate_output(comparison: pd.DataFrame) -> None:
         for cell in row
         if isinstance(cell.value, str) and cell.value.startswith("=")
     )
-    if formula_count != 134:
+    if formula_count != 106:
         raise ValueError(f"Unexpected formula count: {formula_count}")
+    if any(
+        isinstance(cell.value, str) and cell.value.startswith("=")
+        for row in sheet.iter_rows()
+        for cell in row
+    ):
+        raise ValueError("The article-facing Requirement Comparison must contain static values")
     japanese_cells = []
     for workbook_sheet in workbook.worksheets:
         for row in workbook_sheet.iter_rows():

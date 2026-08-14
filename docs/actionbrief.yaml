@@ -669,6 +669,7 @@ figureDictionary:
   fig_prefecture_wide_evacuation_and_equity_demand_screen:
     figureId: fig_prefecture_wide_evacuation_and_equity_demand_screen
     figurePath: data/results/figures/Figure_prefecture_wide_evacuation_and_equity_demand_screen.png
+    figurePanelCount: 4
     figureCaption: Municipal evacuation and equity-demand patterns across Kumamoto Prefecture
     figureAim: Combines the 11-municipality observed-evacuee and Core functional-support maps with Narrow, Core,
       and Broad total and female functional-support estimates to identify geographic concentration and composition-scenario
@@ -676,10 +677,18 @@ figureDictionary:
     figureExplanation: The four panels map observed evacuees and Core functional-support demand, then compare Narrow,
       Core, and Broad total and female functional-support estimates across all 11 municipalities. Values are planning
       scenarios, not observed subgroup counts.
+    figureNote: >-
+      Panel a maps observed evacuees across the 11 municipalities with open shelters. Panel b maps Core estimated
+      functional-support evacuees and distinguishes municipalities with shelter-detail evidence from those supported
+      only by municipal totals. Panel c compares Narrow, Core, and Broad total functional-support estimates by
+      municipality, and panel d gives the corresponding female functional-support estimates. Panels c and d use
+      logarithmic horizontal scales. All subgroup quantities are scenario estimates based on residential and
+      administrative inputs rather than observed shelter-user composition.
     figureSuitableSection: Results
   fig_shelter_spatial_distribution_and_functional_support_sensitivity:
     figureId: fig_shelter_spatial_distribution_and_functional_support_sensitivity
     figurePath: data/results/figures/Figure_shelter_spatial_distribution_and_functional_support_sensitivity.png
+    figurePanelCount: 4
     figureCaption: Shelter locations and functional-support demand sensitivity by city
     figureAim: Combines Kumamoto City and Yatsushiro City locator maps with city-specific low, base, and high shelter
       functional-support estimates so that spatial concentration and overlap-assumption sensitivity can be read
@@ -687,10 +696,18 @@ figureDictionary:
     figureExplanation: Locator maps show the 53 matched shelters and distinguish exact points from district anchors.
       The paired interval panels show Low, Base, and High functional-support estimates for Yatsushiro and Kumamoto
       shelters.
+    figureNote: >-
+      Panel a locates Yatsushiro shelters and distinguishes exact shelter points, district-anchor fallbacks, and
+      co-located shelter codes; panel b locates the 15 exactly matched Kumamoto shelters and neighboring
+      municipalities. Panel c orders all 38 Yatsushiro shelters by Base functional-support demand and shows Low,
+      Base, and High estimates. Panel d applies the same comparison to the 15 Kumamoto shelters. District anchors
+      support district screening only, and all functional-support values are synthetic scenario estimates rather
+      than observed subgroup counts.
     figureSuitableSection: Results
   fig_from_aggregate_benchmarks_to_shelter_toilet_pressure:
     figureId: fig_from_aggregate_benchmarks_to_shelter_toilet_pressure
     figurePath: data/results/figures/Figure_from_aggregate_benchmarks_to_shelter_toilet_pressure.png
+    figurePanelCount: 4
     figureCaption: Benchmark fragmentation and shelter-level temporary-toilet pressure
     figureAim: Connects pooled-city versus sitewise initial and prolonged requirements to priority-shelter demand,
       reported deployable units, water status, and functional-support pressure without interpreting the temporary-toilet
@@ -698,50 +715,90 @@ figureDictionary:
     figureExplanation: The figure links pooled and sitewise toilet requirements to Yatsushiro shortfall screens,
       toilet-car context, water groups, and functional-support demand. The shortfall excludes fixed stalls and is
       a verification signal only.
+    figureNote: >-
+      Panel a compares pooled-city and summed shelter-specific toilet requirements for initial and prolonged
+      benchmarks in Yatsushiro and Kumamoto. Panel b shows the Yatsushiro priority-site temporary-toilet screen,
+      prolonged requirements, and separately reported toilet-car vehicles. Panel c displays observed evacuees by
+      reported water-status category, while panel d shows Base estimated functional-support evacuees for the same
+      groups. The screening shortfall excludes fixed stalls and does not establish verified functional capacity;
+      toilet-car counts remain vehicles rather than inferred stall equivalents.
     figureSuitableSection: Results
   fig_provisional_toilet_rebalancing_and_mobility_scenario_performance:
     figureId: fig_provisional_toilet_rebalancing_and_mobility_scenario_performance
     figurePath: data/results/figures/Figure_provisional_toilet_rebalancing_and_mobility_scenario_performance.png
+    figurePanelCount: 4
     figureCaption: Toilet rebalancing flows and mobility-scenario performance
     figureAim: Combines the current Yatsushiro imbalance map, conditional donor-recipient movements, operational
       outcomes, and women and functional-support demand coverage across the three resource-mobility scenarios.
     figureExplanation: Current imbalances and conditional donor-recipient movements are mapped beside resource,
       residual-shortfall, and resolved-demand outcomes. Full mobility is a best-case planning bound rather than
       a dispatch recommendation.
+    figureNote: >-
+      Panel a maps the current Yatsushiro temporary-toilet-only screening balance, with positive labels indicating
+      required increases and negative labels indicating reported surplus units. Panel b maps conditional transfers
+      under full reported-surplus mobility. Panel c compares transferred units, residual shortfall, and shelters
+      still short under no rebalancing, zero-occupancy-donor movement, and full mobility. Panel d reports the share
+      of evacuee, functional-support, and female functional-support demand at initial shortfall sites that becomes
+      fully resolved. Transfers are a best-case sensitivity, not a verified dispatch plan or route solution.
     figureSuitableSection: Results
   fig_gender_and_functional_support_toilet_service_packages:
     figureId: fig_gender_and_functional_support_toilet_service_packages
     figurePath: data/results/figures/Figure_gender_and_functional_support_toilet_service_packages.png
+    figurePanelCount: 2
     figureCaption: Gender-responsive and functional-support toilet service packages
     figureAim: Displays the recommended women, men, accessible-parity, water and waste-service actions for Yatsushiro
       shelters with a positive temporary-toilet-only screening shortfall.
     figureExplanation: Two heatmap panels summarize incremental women and men designations, accessible-unit parity,
       water and containment checks, hygiene, menstrual-waste, and accessible-route actions for 11 positive-shortfall
       shelters.
+    figureNote: >-
+      Panel a combines observed occupancy, synthetic women and functional-support demand, reported temporary toilets
+      and toilet cars, conditional general-unit additions, women and men designations, and a separate accessible-unit
+      parity screen for the 11 positive-shortfall shelters. Panel b lists the corresponding water and wastewater,
+      containment and collection, lighting and locking, handwashing, menstrual-hygiene, and accessible-route actions.
+      Recommended cells are planning actions rather than observations of existing conditions, and accessible parity
+      is not an official compliance finding.
     figureSuitableSection: Results
   fig_scenario_stability_of_shelter_verification_priority:
     figureId: fig_scenario_stability_of_shelter_verification_priority
     figurePath: data/results/figures/Figure_scenario_stability_of_shelter_verification_priority.png
+    figurePanelCount: 2
     figureCaption: Shelter verification priority stability across overlap scenarios
     figureAim: Appendix figure reporting the complete shelter priority ranks and maximum rank shifts across low,
       base, and high functional-support scenarios.
     figureExplanation: The appendix heatmap reports complete Low, Base, and High rank patterns and maximum shifts,
       distinguishing stable high-priority shelters from scenario-sensitive cases.
+    figureNote: >-
+      Panel a reports Low, Base, and High within-city verification ranks and maximum rank change for all 38
+      Yatsushiro shelters, identifying seven shelters that remain in the top eight and one scenario-sensitive case.
+      Panel b reports the same measures for all 15 Kumamoto shelters, including three stable top-three shelters and
+      no scenario-sensitive case. The horizontal rule marks each city's top-20-percent threshold. Ranks prioritize
+      field verification under synthetic overlap scenarios and do not measure intervention effects or prescribe
+      equipment deployment.
     figureSuitableSection: Appendix
   fig_shelter_toilet_pressure_and_reported_deployment:
     figureId: fig_shelter_toilet_pressure_and_reported_deployment
     figurePath: data/results/figures/Figure_shelter_toilet_pressure_and_reported_deployment.png
+    figurePanelCount: 2
     figureCaption: Shelter toilet pressure and reported deployment coverage
     figureAim: Appendix figure reporting the complete two-city shelter ordering with observed evacuees, temporary-toilet
       units, toilet-car records, and explicit not-reported markers.
     figureExplanation: The complete two-city shelter ordering compares observed evacuees with reported temporary
       toilets and toilet cars while preserving explicit not-reported markers for incomplete Kumamoto deployment
       evidence.
+    figureNote: >-
+      Panel a orders all 38 Yatsushiro shelters by observed evacuees and shows the reported temporary-toilet and
+      toilet-car counts, for which all shelter records are present. Panel b applies the same ordering to all 15
+      Kumamoto shelters while retaining open not-reported markers for 14 temporary-toilet fields and all 15
+      toilet-car fields. Missing deployment records are not recoded to zero. Reported equipment does not establish
+      serviceability, fixed-stall capacity, toilet-car stall equivalents, wastewater operability, or safe and
+      accessible use.
     figureSuitableSection: Appendix
 tableDictionary:
   table_municipality_level_observed_and_scenario_demand_summary:
     tableId: table_municipality_level_observed_and_scenario_demand_summary
     tablePath: data/results/tables/Table_municipality_level_observed_and_scenario_demand_summary.xlsx
+    tableSheet: Municipality Summary
     tableCaption: Municipal evacuation and equity-demand scenario summary
     tableAim: Compares observed demand and female and functional-support scenarios across all municipalities reporting
       open shelters.
@@ -751,6 +808,7 @@ tableDictionary:
   table_municipality_data_coverage_and_evidence_resolution_audit:
     tableId: table_municipality_data_coverage_and_evidence_resolution_audit
     tablePath: data/results/tables/Table_municipality_data_coverage_and_evidence_resolution_audit.xlsx
+    tableSheet: Coverage Audit
     tableCaption: Municipality evidence coverage and resolution audit
     tableAim: Shows which of the 11 affected municipalities have municipality totals, historical shelter rosters,
       shelter occupancy, water status, deployment records, residential sex inputs, and sex-specific certification
@@ -761,6 +819,7 @@ tableDictionary:
   table_robust_shelter_verification_priorities_across_scenarios:
     tableId: table_robust_shelter_verification_priorities_across_scenarios
     tablePath: data/results/tables/Table_robust_shelter_verification_priorities_across_scenarios.xlsx
+    tableSheet: Robust Priorities
     tableCaption: Robust shelter verification priorities across scenarios
     tableAim: Identifies shelters with consistently high total and equity-sensitive demand while retaining reported
       water and deployment context.
@@ -770,6 +829,7 @@ tableDictionary:
   table_shelter_level_equity_demand_scenario_estimates:
     tableId: table_shelter_level_equity_demand_scenario_estimates
     tablePath: data/results/tables/Table_shelter_level_equity_demand_scenario_estimates.xlsx
+    tableSheet: Equity Demand Summary
     tableCaption: Shelter equity-demand estimates across overlap scenarios
     tableAim: Presents an English-only, city-balanced main summary of the ten shelters with the highest Base functional-support
       demand in each city; the complete 53-shelter estimates remain in the workbook appendix.
@@ -779,6 +839,7 @@ tableDictionary:
   table_scenario_stability_of_shelter_priority_rankings:
     tableId: table_scenario_stability_of_shelter_priority_rankings
     tablePath: data/results/tables/Table_scenario_stability_of_shelter_priority_rankings.xlsx
+    tableSheet: Ranking Stability
     tableCaption: Shelter priority rankings and scenario stability
     tableAim: Reports whether shelter verification rankings remain stable across the three overlap scenarios.
     tableExplanation: Complete within-city Low, Base, and High ranks identify stable high-priority shelters, low-sensitivity
@@ -787,6 +848,7 @@ tableDictionary:
   table_aggregate_and_sitewise_requirement_comparison:
     tableId: table_aggregate_and_sitewise_requirement_comparison
     tablePath: data/results/tables/Table_aggregate_and_sitewise_requirement_comparison.xlsx
+    tableSheet: Requirement Comparison
     tableCaption: Pooled and sitewise toilet requirement comparison
     tableAim: Quantifies how pooled and shelter-specific calculations differ across both cities and the two toilet
       benchmarks.
@@ -796,6 +858,7 @@ tableDictionary:
   table_water_status_and_equity_weighted_pressure_summary:
     tableId: table_water_status_and_equity_weighted_pressure_summary
     tablePath: data/results/tables/Table_water_status_and_equity_weighted_pressure_summary.xlsx
+    tableSheet: Water Pressure Summary
     tableCaption: Water status and equity-weighted pressure summary
     tableAim: Summarizes observed demand, scenario functional-support demand, and reported deployment by water-service
       category in Yatsushiro City.
@@ -805,6 +868,7 @@ tableDictionary:
   table_scenario_calibration_catchment_and_evidence_audit:
     tableId: table_scenario_calibration_catchment_and_evidence_audit
     tablePath: data/results/tables/Table_scenario_calibration_catchment_and_evidence_audit.xlsx
+    tableSheet: Calibration Audit
     tableCaption: Scenario calibration and catchment evidence audit
     tableAim: Audits municipality population assignment, certification reconciliation, city calibration, shelter-location
       linkage, and the permitted interpretation of both scenario systems.
@@ -814,6 +878,7 @@ tableDictionary:
   table_shelter_level_provisional_toilet_rebalancing_plan:
     tableId: table_shelter_level_provisional_toilet_rebalancing_plan
     tablePath: data/results/tables/Table_shelter_level_provisional_toilet_rebalancing_plan.xlsx
+    tableSheet: Rebalancing Plan
     tableCaption: Conditional shelter-level toilet rebalancing plan
     tableAim: Presents a compact 12-column Yatsushiro action summary under full reported-surplus mobility while
       retaining the complete 18-column record in the workbook appendix.
@@ -823,6 +888,7 @@ tableDictionary:
   table_priority_shelter_gender_and_accessible_service_packages:
     tableId: table_priority_shelter_gender_and_accessible_service_packages
     tablePath: data/results/tables/Table_priority_shelter_gender_and_accessible_service_packages.xlsx
+    tableSheet: Service Packages
     tableCaption: Priority shelter sanitation service packages
     tableAim: Presents a compact equity-sensitive service package for the positive-screening-shortfall set while
       retaining the complete 16-column record in the workbook appendix.
@@ -832,6 +898,7 @@ tableDictionary:
   table_toilet_rebalancing_scenario_performance_and_robustness:
     tableId: table_toilet_rebalancing_scenario_performance_and_robustness
     tablePath: data/results/tables/Table_toilet_rebalancing_scenario_performance_and_robustness.xlsx
+    tableSheet: Scenario Performance
     tableCaption: Toilet rebalancing performance across mobility scenarios
     tableAim: Quantifies how strongly the apparent mitigation result depends on the assumed mobility of reported
       temporary toilets in a transposed main table while retaining the complete 12-column metric record in the workbook
