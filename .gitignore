@@ -5,3 +5,7 @@
 CLAUDE.md
 AGENTS.md
 /article
+
+# Python runtime artifacts
+__pycache__/
+*.py[cod]
