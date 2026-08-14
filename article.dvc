@@ -1,6 +1,6 @@
 outs:
-- md5: 2d9d39bdbb17294c799a383fff9446a2.dir
-  size: 2
-  nfiles: 2
+- md5: 2effae065c8d17fcc7481599477f7992.dir
+  size: 70238932
+  nfiles: 35
   hash: md5
   path: article
