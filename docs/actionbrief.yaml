@@ -1,0 +1,961 @@
+doc_type: actionbrief
+version: 1.0.0
+datasetDictionary:
+  2026-08-12_1400_municipality_shelter_totals:
+    datasetSourceName: 2026-08-12_1400_municipality_shelter_totals.csv
+    datasetDescription: Official common-snapshot counts of open shelters and evacuees for the 11 Kumamoto Prefecture
+      municipalities reporting evacuation activity.
+    datasetAttribute: table
+    datasetProvider: Kumamoto Prefecture Disaster Response Headquarters
+    datasetGenerationInfo: Visually verified extraction from the prefecture's 24th earthquake damage report.
+    datasetPeriod: 2026-08-12 14:00 JST
+    datasetScale: 11 municipality observations
+    datasetSpatialResolution: Municipality
+    datasetTemporalResolution: Single event snapshot
+    datasetPreprocessingInfo: Parsed observation time, standardized English municipality names, coerced counts to
+      numeric values, and retained evidence tiers without imputation.
+  2026-08-13_0600_open_shelters:
+    datasetSourceName: 2026-08-13_0600_open_shelters.csv
+    datasetDescription: Official Yatsushiro shelter operating table with occupancy, water status, temporary toilets,
+      and toilet-car counts.
+    datasetAttribute: table
+    datasetProvider: Yatsushiro City
+    datasetGenerationInfo: Visually verified transcription from the city's official shelter-status PDF.
+    datasetPeriod: 2026-08-13 06:00 JST
+    datasetScale: 38 shelter observations
+    datasetSpatialResolution: Shelter
+    datasetTemporalResolution: Single event snapshot
+    datasetPreprocessingInfo: Standardized text, parsed the snapshot time, coerced occupancy and deployment counts,
+      and preserved missing service indicators.
+  2604-h2-1_total:
+    datasetSourceName: 2604-h2-1_total.xlsx
+    datasetDescription: All-sex insurer counts by long-term-care support and care certification level.
+    datasetAttribute: table
+    datasetProvider: Japan Ministry of Health, Labour and Welfare
+    datasetGenerationInfo: Official Long-Term Care Insurance Business Status Report insurer table for all certified
+      persons.
+    datasetPeriod: April 2026
+    datasetScale: 45 insurer or municipality observations in Kumamoto Prefecture
+    datasetSpatialResolution: Long-term-care insurer or municipality
+    datasetTemporalResolution: Monthly administrative snapshot
+    datasetPreprocessingInfo: Selected Kumamoto records, standardized insurer names, coerced certification levels
+      to counts, and derived Narrow, Core, and Broad scope totals.
+  2604-h2-2_male:
+    datasetSourceName: 2604-h2-2_male.xlsx
+    datasetDescription: Male insurer counts by long-term-care support and care certification level.
+    datasetAttribute: table
+    datasetProvider: Japan Ministry of Health, Labour and Welfare
+    datasetGenerationInfo: Official Long-Term Care Insurance Business Status Report insurer table for men.
+    datasetPeriod: April 2026
+    datasetScale: 45 insurer or municipality observations in Kumamoto Prefecture
+    datasetSpatialResolution: Long-term-care insurer or municipality
+    datasetTemporalResolution: Monthly administrative snapshot
+    datasetPreprocessingInfo: Selected Kumamoto records, standardized insurer names, coerced certification levels
+      to counts, and derived sex-specific scenario totals.
+  2604-h2-3_female:
+    datasetSourceName: 2604-h2-3_female.xlsx
+    datasetDescription: Female insurer counts by long-term-care support and care certification level.
+    datasetAttribute: table
+    datasetProvider: Japan Ministry of Health, Labour and Welfare
+    datasetGenerationInfo: Official Long-Term Care Insurance Business Status Report insurer table for women.
+    datasetPeriod: April 2026
+    datasetScale: 45 insurer or municipality observations in Kumamoto Prefecture
+    datasetSpatialResolution: Long-term-care insurer or municipality
+    datasetTemporalResolution: Monthly administrative snapshot
+    datasetPreprocessingInfo: Selected Kumamoto records, standardized insurer names, coerced certification levels
+      to counts, derived sex-specific scenario totals, and calculated female certification shares.
+  kumamoto_prefecture_shelter_capacity_sources:
+    datasetSourceName: kumamoto_prefecture_shelter_capacity_sources.parquet
+    datasetDescription: Compiled official reference records for shelter capacity, building area, and earthquake
+      suitability across Kumamoto Prefecture.
+    datasetAttribute: table
+    datasetProvider: Kumamoto prefectural and municipal governments; compiled in KE01f
+    datasetGenerationInfo: Copied read-only from a prior project that assembled and source-audited official facility
+      records.
+    datasetPeriod: Mixed official reference dates
+    datasetScale: 190 facility-source records
+    datasetSpatialResolution: Shelter or facility
+    datasetTemporalResolution: Static reference inventory
+    datasetPreprocessingInfo: Standardized text and categories, coerced capacity and area fields, and preserved
+      missing values and source definitions.
+  kumamoto_prefecture_shelter_master:
+    datasetSourceName: kumamoto_prefecture_shelter_master.parquet
+    datasetDescription: Prefecture-wide geolocated shelter master with facility classifications and limited official
+      person-capacity references.
+    datasetAttribute: table
+    datasetProvider: Kumamoto prefectural and municipal governments; compiled in KE01f
+    datasetGenerationInfo: Copied read-only from a prior project that linked official shelter records to coordinates
+      and reference attributes.
+    datasetPeriod: Reference inventory available before the August 2026 analysis
+    datasetScale: 1,315 shelter records
+    datasetSpatialResolution: Shelter point
+    datasetTemporalResolution: Static reference inventory
+    datasetPreprocessingInfo: Standardized identifiers and classifications, coerced coordinates and capacities,
+      and retained point geometry and evidence tiers.
+  yatsushiro_shelters_2026-08-06_1800:
+    datasetSourceName: yatsushiro_shelters_2026-08-06_1800.csv
+    datasetDescription: Earlier Yatsushiro shelter snapshot with occupancy, water status, temporary toilets, and
+      toilet cars.
+    datasetAttribute: table
+    datasetProvider: Yatsushiro City; copied read-only from KE01d
+    datasetGenerationInfo: Visually checked extraction from the official shelter-status PDF and reused without modifying
+      the source repository.
+    datasetPeriod: 2026-08-06 18:00 JST
+    datasetScale: 41 shelter observations
+    datasetSpatialResolution: Shelter
+    datasetTemporalResolution: Single event snapshot
+    datasetPreprocessingInfo: Corrected the legacy toilet-count meaning to temporary toilets, standardized text
+      and categories, parsed time, and preserved missing values.
+  mesh_equity_scenarios:
+    datasetSourceName: mesh_equity_scenarios_preprocessed.parquet
+    datasetDescription: Calibrated 125-m residential population and functional-support scenario estimates by mesh,
+      sex, and overlap assumption.
+    datasetAttribute: table
+    datasetProvider: Statistics Bureau of Japan, e-Stat; Kumamoto City; Yatsushiro City
+    datasetGenerationInfo: Constructed from the 2020 census mesh, official city disability and long-term-care totals,
+      and three declared disability-care overlap scenarios.
+    datasetPeriod: 2020 census with FY2024 to March 2025 calibration inputs
+    datasetScale: 47,895 mesh-scenario observations
+    datasetSpatialResolution: 125-m population mesh
+    datasetTemporalResolution: Static residential baseline with three planning scenarios
+    datasetPreprocessingInfo: Allocated disclosure groups, calibrated city totals within sex-specific population
+      bounds, and retained Low, Base, and High overlap estimates with QA flags.
+  municipality_equity_scenarios:
+    datasetSourceName: municipality_equity_scenarios_preprocessed.parquet
+    datasetDescription: Observed municipal evacuation totals joined to residential female shares and Narrow, Core,
+      and Broad long-term-care planning proxies.
+    datasetAttribute: table
+    datasetProvider: Derived from Kumamoto Prefecture, e-Stat, and Ministry of Health, Labour and Welfare data
+    datasetGenerationInfo: Constructed by matching all 11 affected municipalities and multiplying observed evacuation
+      totals by declared residential and certification-based shares.
+    datasetPeriod: 2020 population, April 2026 certification, and 2026-08-12 14:00 evacuation snapshot
+    datasetScale: 33 municipality-scenario observations
+    datasetSpatialResolution: Municipality
+    datasetTemporalResolution: Single evacuation snapshot with three scope scenarios
+    datasetPreprocessingInfo: Validated municipality matching, sex reconciliation, common snapshot totals, share
+      bounds, and monotonic Narrow-to-Broad scope ordering.
+  shelter_equity_scenarios:
+    datasetSourceName: shelter_equity_scenarios_preprocessed.parquet
+    datasetDescription: Matched Kumamoto and Yatsushiro shelter observations with spatial catchments and equity-demand
+      scenarios.
+    datasetAttribute: table
+    datasetProvider: Derived from Kumamoto City, Yatsushiro City, e-Stat, and official reference inventories
+    datasetGenerationInfo: Constructed from the matched 12 August 2026 shelter snapshot, exact or district-anchor
+      spatial linkage, and Low, Base, and High overlap assumptions.
+    datasetPeriod: 2020 residential context and 2026-08-12 12:00 shelter observations
+    datasetScale: 159 shelter-scenario observations for 53 shelters
+    datasetSpatialResolution: Shelter point or district-anchor catchment
+    datasetTemporalResolution: Single matched shelter snapshot with three overlap scenarios
+    datasetPreprocessingInfo: Built 53 matched shelter records, preserved missing deployment evidence, generated
+      bounded catchment shares and demand estimates, and flagged location resolution and scenario status.
+variableDictionary:
+  district:
+    variableNameInDataset: district
+    variableNameInArticle: District
+    variableAttribute: categorical
+    variableUnit: not applicable
+    variableDescription: 'Reported shelter district at observation time t. Trimmed text and categorical coding;
+      missing values preserved. Role: heterogeneity.'
+    variableSource: yatsushiro_shelters_2026-08-06_1800
+    observationNumber: 41
+  maximum_shelter_capacity:
+    variableNameInDataset: maximum_capacity
+    variableNameInArticle: Maximum Shelter Capacity
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'Maximum reported shelter capacity in persons for shelter j. Numeric coercion; no imputation
+      or clipping. This is not toilet capacity. Role: contextual control.'
+    variableSource: yatsushiro_shelters_2026-08-06_1800
+    observationNumber: 41
+  evacuee_households:
+    variableNameInDataset: evacuee_households
+    variableNameInArticle: Evacuee Households
+    variableAttribute: count
+    variableUnit: households
+    variableDescription: 'H_{jt}, reported evacuee households at shelter j and time t. Numeric coercion; no imputation.
+      Role: demand context.'
+    variableSource: yatsushiro_shelters_2026-08-06_1800
+    observationNumber: 41
+  evacuees:
+    variableNameInDataset: evacuees
+    variableNameInArticle: Evacuees
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'N_{jt}, reported evacuees at shelter j and time t. Numeric coercion; no imputation. Shelter-specific
+      benchmark requirements are constructed later from this count. Role: primary demand.'
+    variableSource: 2026-08-12_1400_municipality_shelter_totals
+    observationNumber: 11
+  water_status:
+    variableNameInDataset: water_status_symbol
+    variableNameInArticle: Water Status
+    variableAttribute: categorical
+    variableUnit: not applicable
+    variableDescription: 'Reported water-service category at shelter j and time t. Trimmed text and categorical
+      coding. Source symbol variants remain unchanged pending an explicit harmonization rule. Role: operability
+      proxy.'
+    variableSource: yatsushiro_shelters_2026-08-06_1800
+    observationNumber: 41
+  temporary_toilets_installed:
+    variableNameInDataset: toilet_count
+    variableNameInArticle: Temporary Toilets Installed
+    variableAttribute: count
+    variableUnit: units
+    variableDescription: 'T_{jt}, reported installed temporary-toilet units at shelter j and time t. Numeric coercion;
+      no imputation. This excludes fixed stalls and is not a verified functional-capacity measure. Role: observed
+      capacity input.'
+    variableSource: yatsushiro_shelters_2026-08-06_1800
+    observationNumber: 41
+  toilet_cars:
+    variableNameInDataset: portable_toilet_count
+    variableNameInArticle: Toilet Cars
+    variableAttribute: count
+    variableUnit: vehicles
+    variableDescription: 'V_{jt}, reported toilet-car vehicles at shelter j and time t. Numeric coercion; no imputation.
+      Vehicles are not converted to stalls without verified vehicle-specific capacity. Role: observed deployment
+      input.'
+    variableSource: yatsushiro_shelters_2026-08-06_1800
+    observationNumber: 41
+  latitude:
+    variableNameInDataset: Latitude
+    variableNameInArticle: Latitude
+    variableAttribute: continuous
+    variableUnit: decimal degrees
+    variableDescription: 'Latitude of the shelter reference point in decimal degrees. Numeric coercion without coordinate
+      transformation. Role: spatial locator.'
+    variableSource: kumamoto_prefecture_shelter_master
+    observationNumber: 1315
+  longitude:
+    variableNameInDataset: Longitude
+    variableNameInArticle: Longitude
+    variableAttribute: continuous
+    variableUnit: decimal degrees
+    variableDescription: 'Longitude of the shelter reference point in decimal degrees. Numeric coercion without
+      coordinate transformation. Role: spatial locator.'
+    variableSource: kumamoto_prefecture_shelter_master
+    observationNumber: 1315
+  municipality:
+    variableNameInDataset: 保険者名
+    variableNameInArticle: Municipality
+    variableAttribute: categorical
+    variableUnit: not applicable
+    variableDescription: 'Municipality assigned to the facility or capacity record. Trimmed text and categorical
+      coding. Role: geographic heterogeneity.'
+    variableSource: 2604-h2-3_female
+    observationNumber: 45
+  municipality_observation_time:
+    variableNameInDataset: observation_time
+    variableNameInArticle: Municipality Observation Time
+    variableAttribute: categorical
+    variableUnit: datetime (JST)
+    variableDescription: 'Time t_M of the common municipality-level evacuation snapshot. Parsed as a timezone-aware
+      datetime; no imputation. Role: observation timing.'
+    variableSource: 2026-08-12_1400_municipality_shelter_totals
+    observationNumber: 11
+  open_shelter_count:
+    variableNameInDataset: open_shelters
+    variableNameInArticle: Open Shelter Count
+    variableAttribute: count
+    variableUnit: units
+    variableDescription: 'J_{z t_M}, the reported number of open shelters in municipality z at t_M. Numeric coercion;
+      no imputation. It is a count of sites, not toilet capacity. Role: demand dispersion.'
+    variableSource: 2026-08-12_1400_municipality_shelter_totals
+    observationNumber: 11
+  municipality_evidence_tier:
+    variableNameInDataset: evidence_level
+    variableNameInArticle: Municipality Evidence Tier
+    variableAttribute: categorical
+    variableUnit: not applicable
+    variableDescription: 'Evidence-resolution category available for municipality z. Trimmed categorical coding
+      distinguishing municipality-only evidence from shelter-detailed evidence. Role: data-quality control.'
+    variableSource: 2026-08-12_1400_municipality_shelter_totals
+    observationNumber: 11
+  ward:
+    variableNameInDataset: Ward
+    variableNameInArticle: Ward
+    variableAttribute: categorical
+    variableUnit: not applicable
+    variableDescription: 'Ward assigned to a shelter where available. Trimmed text and categorical coding; missing
+      assignments remain missing. Role: geographic heterogeneity.'
+    variableSource: kumamoto_prefecture_shelter_master
+    observationNumber: 190
+  facility_type:
+    variableNameInDataset: Facility Type
+    variableNameInArticle: Facility Type
+    variableAttribute: categorical
+    variableUnit: not applicable
+    variableDescription: 'Facility-use classification of the shelter. Trimmed text and categorical coding. Role:
+      heterogeneity.'
+    variableSource: kumamoto_prefecture_shelter_master
+    observationNumber: 1315
+  shelter_service_class:
+    variableNameInDataset: Shelter Service Class
+    variableNameInArticle: Shelter Service Class
+    variableAttribute: categorical
+    variableUnit: not applicable
+    variableDescription: 'Reported shelter service classification. Trimmed text and categorical coding. Role: heterogeneity.'
+    variableSource: kumamoto_prefecture_shelter_master
+    observationNumber: 1315
+  capacity_evidence_tier:
+    variableNameInDataset: Capacity Evidence Tier
+    variableNameInArticle: Capacity Evidence Tier
+    variableAttribute: categorical
+    variableUnit: persons
+    variableDescription: 'Evidence-strength category for the available facility-capacity value. Trimmed text and
+      categorical coding. Role: data-quality control.'
+    variableSource: kumamoto_prefecture_shelter_master
+    observationNumber: 1315
+  official_shelter_capacity:
+    variableNameInDataset: Official Numeric Capacity
+    variableNameInArticle: Official Shelter Capacity
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'Available official reference capacity in persons. Numeric coercion; high missingness preserved.
+      This is neither event occupancy nor toilet capacity. Role: contextual control.'
+    variableSource: kumamoto_prefecture_shelter_master
+    observationNumber: 128
+  primary_official_capacity:
+    variableNameInDataset: Official Capacity Primary (persons)
+    variableNameInArticle: Primary Official Shelter Capacity (persons)
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'Primary reported facility-capacity concept in persons. Numeric coercion; missing values
+      preserved. Interpretation follows the retained reference definition. Role: contextual control.'
+    variableSource: kumamoto_prefecture_shelter_capacity_sources
+    observationNumber: 186
+  secondary_official_capacity:
+    variableNameInDataset: Official Capacity Secondary (persons)
+    variableNameInArticle: Secondary Official Shelter Capacity (persons)
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'Secondary reported facility-capacity concept in persons. Numeric coercion; missing values
+      preserved. Interpretation follows the retained reference definition. Role: contextual control.'
+    variableSource: kumamoto_prefecture_shelter_capacity_sources
+    observationNumber: 148
+  official_building_area_m2:
+    variableNameInDataset: Official Building Area (m2)
+    variableNameInArticle: Official Building Area (m2)
+    variableAttribute: other
+    variableUnit: square metres
+    variableDescription: 'Available official building area measured in square metres. Numeric coercion; missing
+      values preserved and no imputation or clipping. Role: contextual control.'
+    variableSource: kumamoto_prefecture_shelter_capacity_sources
+    observationNumber: 42
+  earthquake_opening_or_suitability_flag:
+    variableNameInDataset: Earthquake Opening or Suitability Flag
+    variableNameInArticle: Earthquake Opening or Suitability Flag
+    variableAttribute: categorical
+    variableUnit: not applicable
+    variableDescription: 'Official categorical indication concerning earthquake opening or suitability. Categorical
+      coding with missing values preserved. It is not treated as proof that the facility was open during a particular
+      response snapshot. Role: eligibility context.'
+    variableSource: kumamoto_prefecture_shelter_capacity_sources
+    observationNumber: 149
+  support_level_1:
+    variableNameInDataset: 要支援1
+    variableNameInArticle: Long-Term Care Support Level 1 Certified Population
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'L_{zg,S1}, residents certified at Support Level 1 in municipality z and sex group g. Published
+      April 2026 insurer count retained separately for all persons, men, and women; numeric coercion without imputation.
+      Role: administrative need proxy.'
+    variableSource: 2604-h2-3_female
+    observationNumber: 45
+  support_level_2:
+    variableNameInDataset: 要支援2
+    variableNameInArticle: Long-Term Care Support Level 2 Certified Population
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'L_{zg,S2}, residents certified at Support Level 2 in municipality z and sex group g. Published
+      April 2026 insurer count retained separately for all persons, men, and women; numeric coercion without imputation.
+      Role: administrative need proxy.'
+    variableSource: 2604-h2-3_female
+    observationNumber: 45
+  care_level_1:
+    variableNameInDataset: 要介護1
+    variableNameInArticle: Long-Term Care Care Level 1 Certified Population
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'L_{zg,C1}, residents certified at Care Level 1 in municipality z and sex group g. Published
+      April 2026 insurer count retained separately for all persons, men, and women; numeric coercion without imputation.
+      Role: administrative need proxy.'
+    variableSource: 2604-h2-3_female
+    observationNumber: 45
+  care_level_2:
+    variableNameInDataset: 要介護2
+    variableNameInArticle: Long-Term Care Care Level 2 Certified Population
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'L_{zg,C2}, residents certified at Care Level 2 in municipality z and sex group g. Published
+      April 2026 insurer count retained separately for all persons, men, and women; numeric coercion without imputation.
+      Role: administrative need proxy.'
+    variableSource: 2604-h2-3_female
+    observationNumber: 45
+  care_level_3:
+    variableNameInDataset: 要介護3
+    variableNameInArticle: Long-Term Care Care Level 3 Certified Population
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'L_{zg,C3}, residents certified at Care Level 3 in municipality z and sex group g. Published
+      April 2026 insurer count retained separately for all persons, men, and women; numeric coercion without imputation.
+      Role: administrative need proxy.'
+    variableSource: 2604-h2-3_female
+    observationNumber: 45
+  care_level_4:
+    variableNameInDataset: 要介護4
+    variableNameInArticle: Long-Term Care Care Level 4 Certified Population
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'L_{zg,C4}, residents certified at Care Level 4 in municipality z and sex group g. Published
+      April 2026 insurer count retained separately for all persons, men, and women; numeric coercion without imputation.
+      Role: administrative need proxy.'
+    variableSource: 2604-h2-3_female
+    observationNumber: 45
+  care_level_5:
+    variableNameInDataset: 要介護5
+    variableNameInArticle: Long-Term Care Care Level 5 Certified Population
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'L_{zg,C5}, residents certified at Care Level 5 in municipality z and sex group g. Published
+      April 2026 insurer count retained separately for all persons, men, and women; numeric coercion without imputation.
+      Role: administrative need proxy.'
+    variableSource: 2604-h2-3_female
+    observationNumber: 45
+  certified_total:
+    variableNameInDataset: 合計
+    variableNameInArticle: Long-Term Care Certified Population
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'L_{zg}, the published total certified population for municipality z and sex group g. Validated
+      to equal the sum of Support Levels 1-2 and Care Levels 1-5. Role: administrative need proxy.'
+    variableSource: 2604-h2-3_female
+    observationNumber: 45
+  higher_assistance_certified_population:
+    variableNameInDataset: Higher Assistance Certified Population
+    variableNameInArticle: Higher Assistance Long-Term Care Certified Population
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'H_{zg}=L_{zg,C3}+L_{zg,C4}+L_{zg,C5}. Narrow functional-support scope; calculated separately
+      for all persons, men, and women. Role: narrow scenario need.'
+    variableSource: 2604-h2-3_female
+    observationNumber: 45
+  care_certified_population:
+    variableNameInDataset: Care Certified Population
+    variableNameInArticle: Care Level 1-5 Certified Population
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'C_{zg}=\sum_{r=1}^{5}L_{zg,Cr}. Core functional-support scope; calculated separately for
+      all persons, men, and women. Role: core scenario need.'
+    variableSource: 2604-h2-3_female
+    observationNumber: 45
+  support_or_care_certified_population:
+    variableNameInDataset: Support or Care Certified Population
+    variableNameInArticle: Support Level 1-2 or Care Level 1-5 Certified Population
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'B_{zg}=L_{zg,S1}+L_{zg,S2}+C_{zg}. Broad functional-support scope; validated against Certified
+      Total. Role: broad scenario need.'
+    variableSource: 2604-h2-3_female
+    observationNumber: 45
+  female_certified_share:
+    variableNameInDataset: Female Certified Share
+    variableNameInArticle: Female Share of Long-Term Care Certified Population
+    variableAttribute: continuous
+    variableUnit: proportion (0-1)
+    variableDescription: 'p_{zF}^{LTC}=B_{zF}/B_{z,all}. Female published certified total divided by the all-sex
+      published certified total. Role: intersectional administrative context.'
+    variableSource: 2604-h2-3_female
+    observationNumber: 45
+  mesh_female_population:
+    variableNameInDataset: Female Population
+    variableNameInArticle: Mesh Female Population
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'F_m, published female residents in mesh m. Retained from the 2020 census mesh. It is not
+      observed shelter composition. Role: residential context.'
+    variableSource: mesh_equity_scenarios
+    observationNumber: 47895
+  mesh_age_sex_population:
+    variableNameInDataset: Male/Female Age 0-14, 15-64, 65-74, 75-84, 85+
+    variableNameInArticle: Mesh Age-Sex Population
+    variableAttribute: count
+    variableUnit: persons
+    variableDescription: 'N_{mga}, residents in mesh m, sex group g, and non-overlapping age group a. Published
+      values are retained where available; disclosure-group totals are allocated to constituent meshes in proportion
+      to sex-specific population and remain flagged as reconstructed. Role: synthetic allocation input.'
+    variableSource: mesh_equity_scenarios
+    observationNumber: 47895
+  scenario:
+    variableNameInDataset: Scenario
+    variableNameInArticle: Functional-Support Overlap Scenario
+    variableAttribute: categorical
+    variableUnit: not applicable
+    variableDescription: 's \in \{\mathrm{low},\mathrm{base},\mathrm{high}\}. Low assumes complete overlap, base
+      assumes half overlap, and high assumes no overlap between allocated physical-disability and long-term-care
+      populations. Role: uncertainty dimension.'
+    variableSource: mesh_equity_scenarios
+    observationNumber: 47895
+  estimated_physical_disability_population:
+    variableNameInDataset: Estimated Physical Disability Population
+    variableNameInArticle: Estimated Physical Disability Population
+    variableAttribute: continuous
+    variableUnit: persons
+    variableDescription: 'D_{mg}, calibrated physical-disability population for mesh m and sex group g. City administrative
+      totals are allocated by declared age weights and bounded by sex-specific mesh population. Role: synthetic
+      need component.'
+    variableSource: mesh_equity_scenarios
+    observationNumber: 47895
+  estimated_long_term_care_population:
+    variableNameInDataset: Estimated Long-Term Care Population
+    variableNameInArticle: Estimated Long-Term Care Population
+    variableAttribute: continuous
+    variableUnit: persons
+    variableDescription: 'C_{mg}, calibrated long-term-care population for mesh m and sex group g. City administrative
+      totals are allocated by declared age weights and bounded by sex-specific mesh population. Role: synthetic
+      need component.'
+    variableSource: mesh_equity_scenarios
+    observationNumber: 47895
+  estimated_functional_support_population:
+    variableNameInDataset: Estimated Functional Support Population
+    variableNameInArticle: Estimated Functional Support Population
+    variableAttribute: continuous
+    variableUnit: persons
+    variableDescription: 'U_{mg}^{(s)}, the scenario union of D_{mg} and C_{mg}. Constructed under the declared
+      overlap scenario and capped by sex-specific mesh population; disability and care counts are never simply asserted
+      to be disjoint. Role: scenario need.'
+    variableSource: mesh_equity_scenarios
+    observationNumber: 47895
+  estimated_female_functional_support_population:
+    variableNameInDataset: Estimated Female Functional Support Population
+    variableNameInArticle: Estimated Female Functional Support Population
+    variableAttribute: continuous
+    variableUnit: persons
+    variableDescription: 'Female component of U_{mg}^{(s)}. Uses the same age-risk weights for men and women because
+      city age-by-sex administrative margins are unavailable; local sex differences arise from age composition.
+      Role: intersectional scenario need.'
+    variableSource: mesh_equity_scenarios
+    observationNumber: 47895
+  municipality_female_share:
+    variableNameInDataset: Municipality Female Share
+    variableNameInArticle: Municipality Residential Female Population Share
+    variableAttribute: categorical
+    variableUnit: proportion (0-1)
+    variableDescription: 'q_{zF}=F_z/P_z, where F_z and P_z are 2020 female and total residential populations assigned
+      to municipality z. Aggregated from mesh centers within 2025 administrative boundaries. It is not observed
+      shelter composition. Role: synthetic municipality composition input.'
+    variableSource: municipality_equity_scenarios
+    observationNumber: 33
+  functional_support_scenario:
+    variableNameInDataset: Functional Support Scenario
+    variableNameInArticle: Municipality Functional-Support Scope Scenario
+    variableAttribute: categorical
+    variableUnit: not applicable
+    variableDescription: 'h \in \{\mathrm{Narrow},\mathrm{Core},\mathrm{Broad}\}. Narrow uses Care Levels 3-5; Core
+      uses Care Levels 1-5; Broad uses Support Levels 1-2 and Care Levels 1-5. Role: uncertainty dimension.'
+    variableSource: municipality_equity_scenarios
+    observationNumber: 33
+  municipality_functional_support_share:
+    variableNameInDataset: Municipality Functional Support Share
+    variableNameInArticle: Municipality Long-Term-Care Functional-Support Proxy Share
+    variableAttribute: categorical
+    variableUnit: proportion (0-1)
+    variableDescription: 'q_{zU}^{(h)}=U_z^{(h)}/P_z. Scenario-specific certified population divided by 2020 residential
+      population; this is an administrative proxy, not observed disability prevalence. Role: synthetic municipality
+      need.'
+    variableSource: municipality_equity_scenarios
+    observationNumber: 33
+  municipality_female_functional_support_share:
+    variableNameInDataset: Municipality Female Functional Support Share
+    variableNameInArticle: Municipality Female Long-Term-Care Functional-Support Proxy Share
+    variableAttribute: categorical
+    variableUnit: proportion (0-1)
+    variableDescription: 'q_{zFU}^{(h)}=U_{zF}^{(h)}/P_z. Scenario-specific female certified population divided
+      by total 2020 residential population. Role: intersectional synthetic need.'
+    variableSource: municipality_equity_scenarios
+    observationNumber: 33
+  catchment_female_share:
+    variableNameInDataset: Catchment Female Share
+    variableNameInArticle: Residential Catchment Female Share
+    variableAttribute: continuous
+    variableUnit: proportion (0-1)
+    variableDescription: 'q_{jF}, female residents divided by all residents in shelter or district catchment j.
+      Kumamoto uses nearest-open-shelter catchments; Yatsushiro uses nearest district-anchor catchments. Role: synthetic
+      shelter composition input.'
+    variableSource: shelter_equity_scenarios
+    observationNumber: 159
+  catchment_functional_support_share:
+    variableNameInDataset: Catchment Functional Support Share
+    variableNameInArticle: Residential Catchment Functional Support Share
+    variableAttribute: continuous
+    variableUnit: proportion (0-1)
+    variableDescription: 'q_{jU}^{(s)}, estimated functional-support residents divided by all residents in catchment
+      j. Computed separately under each overlap scenario. Role: synthetic shelter composition input.'
+    variableSource: shelter_equity_scenarios
+    observationNumber: 159
+  estimated_female_evacuees:
+    variableNameInDataset: Estimated Female Evacuees
+    variableNameInArticle: Estimated Female Evacuees
+    variableAttribute: continuous
+    variableUnit: persons
+    variableDescription: '\hat{N}_{jF}=N_j q_{jF}. Observed shelter occupancy is multiplied by residential catchment
+      composition. This is not an observed sex-disaggregated count. Role: synthetic demand.'
+    variableSource: municipality_equity_scenarios
+    observationNumber: 33
+  estimated_functional_support_evacuees:
+    variableNameInDataset: Estimated Functional Support Evacuees
+    variableNameInArticle: Estimated Functional Support Evacuees
+    variableAttribute: continuous
+    variableUnit: persons
+    variableDescription: '\hat{N}_{jU}^{(s)}=N_j q_{jU}^{(s)}. Observed shelter occupancy is multiplied by scenario
+      residential catchment composition. Role: scenario demand.'
+    variableSource: municipality_equity_scenarios
+    observationNumber: 33
+  estimated_female_functional_support_evacuees:
+    variableNameInDataset: Estimated Female Functional Support Evacuees
+    variableNameInArticle: Estimated Female Functional Support Evacuees
+    variableAttribute: continuous
+    variableUnit: persons
+    variableDescription: '\hat{N}_{jFU}^{(s)}=N_j q_{jFU}^{(s)}. Derived from the female functional-support share
+      of the residential catchment. Role: intersectional scenario demand.'
+    variableSource: municipality_equity_scenarios
+    observationNumber: 33
+  municipality_estimated_female_evacuees:
+    variableNameInDataset: Estimated Female Evacuees
+    variableNameInArticle: Municipality Scenario-Estimated Female Evacuees
+    variableAttribute: categorical
+    variableUnit: persons
+    variableDescription: '\hat{N}_{zF}=N_z q_{zF}. Observed municipality evacuees multiplied by residential female
+      share; not an observed sex-disaggregated count. Role: synthetic municipality demand.'
+    variableSource: municipality_equity_scenarios
+    observationNumber: 33
+  municipality_estimated_functional_support_evacuees:
+    variableNameInDataset: Estimated Functional Support Evacuees
+    variableNameInArticle: Municipality Scenario-Estimated Functional-Support Evacuees
+    variableAttribute: categorical
+    variableUnit: persons
+    variableDescription: '\hat{N}_{zU}^{(h)}=N_z q_{zU}^{(h)}. Observed municipality evacuees multiplied by the
+      scenario administrative-proxy share. Role: synthetic municipality demand.'
+    variableSource: municipality_equity_scenarios
+    observationNumber: 33
+  municipality_estimated_female_functional_support_evacuees:
+    variableNameInDataset: Estimated Female Functional Support Evacuees
+    variableNameInArticle: Municipality Scenario-Estimated Female Functional-Support Evacuees
+    variableAttribute: categorical
+    variableUnit: persons
+    variableDescription: '\hat{N}_{zFU}^{(h)}=N_z q_{zFU}^{(h)}. Observed municipality evacuees multiplied by the
+      female scenario administrative-proxy share. Role: intersectional synthetic demand.'
+    variableSource: municipality_equity_scenarios
+    observationNumber: 33
+  accessible_unit_parity_screen:
+    variableNameInDataset: Initial/Prolonged Accessible Unit Parity Screen
+    variableNameInArticle: Accessible Unit Parity Screen
+    variableAttribute: other
+    variableUnit: units
+    variableDescription: 'R_{jA}^{(s,k)}=\lceil \hat{N}_{jU}^{(s)}/k \rceil. Applies the declared 50-person or 20-person
+      ratio to estimated functional-support demand. It is not an official accessible-toilet compliance threshold
+      and remains separate from ordinary stalls. Role: scenario verification input.'
+    variableSource: shelter_equity_scenarios
+    observationNumber: 159
+  location_resolution:
+    variableNameInDataset: Location Resolution
+    variableNameInArticle: Shelter Location Resolution
+    variableAttribute: categorical
+    variableUnit: not applicable
+    variableDescription: 'Categorical evidence level for the coordinates or catchment anchor assigned to shelter
+      j. Whitespace-trimmed categorical field preserving exact shelter-master matches and district-anchor fallbacks;
+      no imputation or consolidation. Role: data-quality control.'
+    variableSource: shelter_equity_scenarios
+    observationNumber: 159
+figureDictionary:
+  fig_prefecture_wide_evacuation_and_equity_demand_screen:
+    figureId: fig_prefecture_wide_evacuation_and_equity_demand_screen
+    figurePath: data/results/figures/Figure_prefecture_wide_evacuation_and_equity_demand_screen.png
+    figureCaption: Municipal evacuation and equity-demand patterns across Kumamoto Prefecture
+    figureAim: Combines the 11-municipality observed-evacuee and Core functional-support maps with Narrow, Core,
+      and Broad total and female functional-support estimates to identify geographic concentration and composition-scenario
+      sensitivity in one prefecture-wide screen.
+    figureExplanation: The four panels map observed evacuees and Core functional-support demand, then compare Narrow,
+      Core, and Broad total and female functional-support estimates across all 11 municipalities. Values are planning
+      scenarios, not observed subgroup counts.
+    figureSuitableSection: Results
+  fig_shelter_spatial_distribution_and_functional_support_sensitivity:
+    figureId: fig_shelter_spatial_distribution_and_functional_support_sensitivity
+    figurePath: data/results/figures/Figure_shelter_spatial_distribution_and_functional_support_sensitivity.png
+    figureCaption: Shelter locations and functional-support demand sensitivity by city
+    figureAim: Combines Kumamoto City and Yatsushiro City locator maps with city-specific low, base, and high shelter
+      functional-support estimates so that spatial concentration and overlap-assumption sensitivity can be read
+      together.
+    figureExplanation: Locator maps show the 53 matched shelters and distinguish exact points from district anchors.
+      The paired interval panels show Low, Base, and High functional-support estimates for Yatsushiro and Kumamoto
+      shelters.
+    figureSuitableSection: Results
+  fig_from_aggregate_benchmarks_to_shelter_toilet_pressure:
+    figureId: fig_from_aggregate_benchmarks_to_shelter_toilet_pressure
+    figurePath: data/results/figures/Figure_from_aggregate_benchmarks_to_shelter_toilet_pressure.png
+    figureCaption: Benchmark fragmentation and shelter-level temporary-toilet pressure
+    figureAim: Connects pooled-city versus sitewise initial and prolonged requirements to priority-shelter demand,
+      reported deployable units, water status, and functional-support pressure without interpreting the temporary-toilet
+      screen as verified functional capacity.
+    figureExplanation: The figure links pooled and sitewise toilet requirements to Yatsushiro shortfall screens,
+      toilet-car context, water groups, and functional-support demand. The shortfall excludes fixed stalls and is
+      a verification signal only.
+    figureSuitableSection: Results
+  fig_provisional_toilet_rebalancing_and_mobility_scenario_performance:
+    figureId: fig_provisional_toilet_rebalancing_and_mobility_scenario_performance
+    figurePath: data/results/figures/Figure_provisional_toilet_rebalancing_and_mobility_scenario_performance.png
+    figureCaption: Toilet rebalancing flows and mobility-scenario performance
+    figureAim: Combines the current Yatsushiro imbalance map, conditional donor-recipient movements, operational
+      outcomes, and women and functional-support demand coverage across the three resource-mobility scenarios.
+    figureExplanation: Current imbalances and conditional donor-recipient movements are mapped beside resource,
+      residual-shortfall, and resolved-demand outcomes. Full mobility is a best-case planning bound rather than
+      a dispatch recommendation.
+    figureSuitableSection: Results
+  fig_gender_and_functional_support_toilet_service_packages:
+    figureId: fig_gender_and_functional_support_toilet_service_packages
+    figurePath: data/results/figures/Figure_gender_and_functional_support_toilet_service_packages.png
+    figureCaption: Gender-responsive and functional-support toilet service packages
+    figureAim: Displays the recommended women, men, accessible-parity, water and waste-service actions for Yatsushiro
+      shelters with a positive temporary-toilet-only screening shortfall.
+    figureExplanation: Two heatmap panels summarize incremental women and men designations, accessible-unit parity,
+      water and containment checks, hygiene, menstrual-waste, and accessible-route actions for 11 positive-shortfall
+      shelters.
+    figureSuitableSection: Results
+  fig_scenario_stability_of_shelter_verification_priority:
+    figureId: fig_scenario_stability_of_shelter_verification_priority
+    figurePath: data/results/figures/Figure_scenario_stability_of_shelter_verification_priority.png
+    figureCaption: Shelter verification priority stability across overlap scenarios
+    figureAim: Appendix figure reporting the complete shelter priority ranks and maximum rank shifts across low,
+      base, and high functional-support scenarios.
+    figureExplanation: The appendix heatmap reports complete Low, Base, and High rank patterns and maximum shifts,
+      distinguishing stable high-priority shelters from scenario-sensitive cases.
+    figureSuitableSection: Appendix
+  fig_shelter_toilet_pressure_and_reported_deployment:
+    figureId: fig_shelter_toilet_pressure_and_reported_deployment
+    figurePath: data/results/figures/Figure_shelter_toilet_pressure_and_reported_deployment.png
+    figureCaption: Shelter toilet pressure and reported deployment coverage
+    figureAim: Appendix figure reporting the complete two-city shelter ordering with observed evacuees, temporary-toilet
+      units, toilet-car records, and explicit not-reported markers.
+    figureExplanation: The complete two-city shelter ordering compares observed evacuees with reported temporary
+      toilets and toilet cars while preserving explicit not-reported markers for incomplete Kumamoto deployment
+      evidence.
+    figureSuitableSection: Appendix
+tableDictionary:
+  table_municipality_level_observed_and_scenario_demand_summary:
+    tableId: table_municipality_level_observed_and_scenario_demand_summary
+    tablePath: data/results/tables/Table_municipality_level_observed_and_scenario_demand_summary.xlsx
+    tableCaption: Municipal evacuation and equity-demand scenario summary
+    tableAim: Compares observed demand and female and functional-support scenarios across all municipalities reporting
+      open shelters.
+    tableExplanation: Thirty-three municipality-scenario rows report observed evacuees, estimated female and functional-support
+      demand, benchmark requirements, accessible-unit parity screens, observation time, and evidence tier.
+    tableSuitableSection: Results
+  table_municipality_data_coverage_and_evidence_resolution_audit:
+    tableId: table_municipality_data_coverage_and_evidence_resolution_audit
+    tablePath: data/results/tables/Table_municipality_data_coverage_and_evidence_resolution_audit.xlsx
+    tableCaption: Municipality evidence coverage and resolution audit
+    tableAim: Shows which of the 11 affected municipalities have municipality totals, historical shelter rosters,
+      shelter occupancy, water status, deployment records, residential sex inputs, and sex-specific certification
+      inputs.
+    tableExplanation: The main sheet documents data availability and permitted analysis for all 11 municipalities;
+      audit inputs reconcile sex-specific certification counts and notes state decisive evidence limits.
+    tableSuitableSection: Methods
+  table_robust_shelter_verification_priorities_across_scenarios:
+    tableId: table_robust_shelter_verification_priorities_across_scenarios
+    tablePath: data/results/tables/Table_robust_shelter_verification_priorities_across_scenarios.xlsx
+    tableCaption: Robust shelter verification priorities across scenarios
+    tableAim: Identifies shelters with consistently high total and equity-sensitive demand while retaining reported
+      water and deployment context.
+    tableExplanation: The English-only 15-shelter minimax set combines cross-scenario demand ranks with women, water,
+      and reported deployment context. Rankings prioritize verification and do not optimize deployment.
+    tableSuitableSection: Results
+  table_shelter_level_equity_demand_scenario_estimates:
+    tableId: table_shelter_level_equity_demand_scenario_estimates
+    tablePath: data/results/tables/Table_shelter_level_equity_demand_scenario_estimates.xlsx
+    tableCaption: Shelter equity-demand estimates across overlap scenarios
+    tableAim: Presents an English-only, city-balanced main summary of the ten shelters with the highest Base functional-support
+      demand in each city; the complete 53-shelter estimates remain in the workbook appendix.
+    tableExplanation: The main sheet presents ten high-demand shelters per city; the appendix retains all 53 shelters
+      under three overlap scenarios with location-resolution and evidence-status fields.
+    tableSuitableSection: Results
+  table_scenario_stability_of_shelter_priority_rankings:
+    tableId: table_scenario_stability_of_shelter_priority_rankings
+    tablePath: data/results/tables/Table_scenario_stability_of_shelter_priority_rankings.xlsx
+    tableCaption: Shelter priority rankings and scenario stability
+    tableAim: Reports whether shelter verification rankings remain stable across the three overlap scenarios.
+    tableExplanation: Complete within-city Low, Base, and High ranks identify stable high-priority shelters, low-sensitivity
+      cases, and scenario-sensitive rank movement across the 53-shelter sample.
+    tableSuitableSection: Appendix
+  table_aggregate_and_sitewise_requirement_comparison:
+    tableId: table_aggregate_and_sitewise_requirement_comparison
+    tablePath: data/results/tables/Table_aggregate_and_sitewise_requirement_comparison.xlsx
+    tableCaption: Pooled and sitewise toilet requirement comparison
+    tableAim: Quantifies how pooled and shelter-specific calculations differ across both cities and the two toilet
+      benchmarks.
+    tableExplanation: Four city-benchmark rows quantify the extra units produced by separately rounding each shelter
+      and report temporary-toilet coverage without equating deployment with functional capacity.
+    tableSuitableSection: Results
+  table_water_status_and_equity_weighted_pressure_summary:
+    tableId: table_water_status_and_equity_weighted_pressure_summary
+    tablePath: data/results/tables/Table_water_status_and_equity_weighted_pressure_summary.xlsx
+    tableCaption: Water status and equity-weighted pressure summary
+    tableAim: Summarizes observed demand, scenario functional-support demand, and reported deployment by water-service
+      category in Yatsushiro City.
+    tableExplanation: Nine water-status-scenario rows aggregate occupancy, synthetic subgroup demand, reported deployment,
+      prolonged requirements, and temporary-toilet-only shortfalls for Yatsushiro shelters.
+    tableSuitableSection: Results
+  table_scenario_calibration_catchment_and_evidence_audit:
+    tableId: table_scenario_calibration_catchment_and_evidence_audit
+    tablePath: data/results/tables/Table_scenario_calibration_catchment_and_evidence_audit.xlsx
+    tableCaption: Scenario calibration and catchment evidence audit
+    tableAim: Audits municipality population assignment, certification reconciliation, city calibration, shelter-location
+      linkage, and the permitted interpretation of both scenario systems.
+    tableExplanation: Eleven checks verify residential assignment, disability and care calibration, sex reconciliation,
+      near-time shelter totals, location linkage, reference periods, and prohibited interpretations.
+    tableSuitableSection: Methods
+  table_shelter_level_provisional_toilet_rebalancing_plan:
+    tableId: table_shelter_level_provisional_toilet_rebalancing_plan
+    tablePath: data/results/tables/Table_shelter_level_provisional_toilet_rebalancing_plan.xlsx
+    tableCaption: Conditional shelter-level toilet rebalancing plan
+    tableAim: Presents a compact 12-column Yatsushiro action summary under full reported-surplus mobility while
+      retaining the complete 18-column record in the workbook appendix.
+    tableExplanation: The 38-shelter action summary and full-record appendices report current balance, proposed
+      transfers, post-transfer inventory, donor protection, distances, and location resolution under full mobility.
+    tableSuitableSection: Results
+  table_priority_shelter_gender_and_accessible_service_packages:
+    tableId: table_priority_shelter_gender_and_accessible_service_packages
+    tablePath: data/results/tables/Table_priority_shelter_gender_and_accessible_service_packages.xlsx
+    tableCaption: Priority shelter sanitation service packages
+    tableAim: Presents a compact equity-sensitive service package for the positive-screening-shortfall set while
+      retaining the complete 16-column record in the workbook appendix.
+    tableExplanation: The compact table specifies incremental women and men units plus accessibility, water, containment,
+      safety, hygiene, menstrual-waste, and route-verification actions for 11 priority shelters.
+    tableSuitableSection: Results
+  table_toilet_rebalancing_scenario_performance_and_robustness:
+    tableId: table_toilet_rebalancing_scenario_performance_and_robustness
+    tablePath: data/results/tables/Table_toilet_rebalancing_scenario_performance_and_robustness.xlsx
+    tableCaption: Toilet rebalancing performance across mobility scenarios
+    tableAim: Quantifies how strongly the apparent mitigation result depends on the assumed mobility of reported
+      temporary toilets in a transposed main table while retaining the complete 12-column metric record in the workbook
+      appendix.
+    tableExplanation: The transposed comparison reports movable and transferred units, recipient outcomes, residual
+      shortfall, resolved and unresolved demand, distance, and interpretation boundaries for three mobility assumptions.
+    tableSuitableSection: Results
+analysisStructureBrief:
+  overview: A two-tier descriptive planning framework combines an 11-municipality observed-demand screen with a
+    matched 53-shelter analysis for Kumamoto and Yatsushiro. It separates observed evacuation and deployment fields
+    from synthetic women and functional-support scenarios, then evaluates benchmark fragmentation, evidence-aware
+    verification priorities, and conditional Yatsushiro rebalancing without making causal or verified functional-capacity
+    claims.
+  levels:
+  - levelName: Evidence, linkage, and calibration audit
+    levelAim: Verify that municipality, demographic, shelter, and spatial inputs can support the declared two-tier
+      screening design.
+    inputs:
+    - Municipality
+    - Municipality Observation Time
+    - Open Shelter Count
+    - Evacuees
+    - Mesh Age-Sex Population
+    - Latitude
+    - Longitude
+    - Shelter Location Resolution
+    - Municipality Evidence Tier
+    modelOrMethod: Reconcile male plus female certification counts, reproduce common-snapshot totals and city calibration
+      margins, validate coordinates and catchment assignments, and calculate audit coverage as \(Q_r=M_r/A_r\),
+      where \(M_r\) is the number meeting audit component \(r\) and \(A_r\) is the eligible count.
+    outputs:
+    - Municipality Data Coverage and Evidence Resolution Audit
+    - Scenario Calibration, Catchment, and Evidence Audit
+    interpretation: Passing checks supports reproducible scenario construction at the recorded evidence tier. It
+      does not convert residential composition, administrative certification, or district anchors into observed
+      shelter-user characteristics.
+  - levelName: Prefecture-wide municipality screening
+    levelAim: Compare observed sanitation demand and scope-sensitive equity demand across 11 affected municipalities.
+    inputs:
+    - Municipality
+    - Open Shelter Count
+    - Evacuees
+    - Municipality Residential Female Population Share
+    - Municipality Functional-Support Scope Scenario
+    - Municipality Long-Term-Care Functional-Support Proxy Share
+    - Municipality Female Long-Term-Care Functional-Support Proxy Share
+    modelOrMethod: Calculate benchmark demand as \(R_z^{(b)}=\lceil N_z/k_b\rceil\). Estimate female and functional-support
+      demand by multiplying observed evacuees by the relevant residential or certification-based share, and compare
+      municipality magnitudes and ranks across Narrow, Core, and Broad scopes.
+    outputs:
+    - Prefecture-Wide Evacuation and Equity-Demand Screen
+    - Municipality-Level Observed and Scenario Demand Summary
+    interpretation: Observed evacuees determine total benchmark demand; scenario shares determine equity-weighted
+      estimates. Results support municipality verification order only, not observed subgroup prevalence or within-city
+      shelter adequacy.
+  - levelName: Shelter equity demand and priority robustness
+    levelAim: Estimate women and functional-support demand at matched shelters and test whether verification priorities
+      survive overlap assumptions.
+    inputs:
+    - Municipality
+    - District
+    - Ward
+    - Evacuees
+    - Residential Catchment Female Share
+    - Residential Catchment Functional Support Share
+    - Functional-Support Overlap Scenario
+    - Shelter Location Resolution
+    modelOrMethod: Estimate \(\widehat{N}_{jF}=N_jq_{jF}\), \(\widehat{N}_{jU}^{(s)}=N_jq_{jU}^{(s)}\), and the
+      corresponding female functional-support demand. Rank shelters lexicographically within city and across cities,
+      report rank span, and select the prespecified 15-row minimax set using each shelter's worst scenario rank.
+    outputs:
+    - Shelter Spatial Distribution and Functional-Support Sensitivity
+    - Shelter-Level Equity Demand Scenario Estimates
+    - Scenario Stability of Shelter Verification Priority
+    - Robust Shelter Verification Priorities across Scenarios
+    - Scenario Stability of Shelter Priority Rankings
+    interpretation: Occupancy and catchment shares generate planning expectations. Stable ranks justify robust field-verification
+      attention, while district-anchor cases remain district-level screens and no rank estimates intervention benefit.
+  - levelName: Benchmark fragmentation and operational pressure
+    levelAim: Measure how sitewise rounding and reported deployable sanitation align with shelter demand and water
+      context.
+    inputs:
+    - Municipality
+    - Evacuees
+    - Temporary Toilets Installed
+    - Toilet Cars
+    - Water Status
+    - Estimated Functional Support Evacuees
+    modelOrMethod: For benchmark \(b\), compute site demand \(R_j^{(b)}=\lceil N_j/k_b\rceil\), pooled and summed
+      sitewise totals, and fragmentation increment. Screen \(S_j=\max(0,R_j^{(20)}-T_j)\) only where temporary-toilet
+      deployment is observed, then summarize demand and pressure by water category.
+    outputs:
+    - From Aggregate Benchmarks to Shelter Toilet Pressure
+    - Shelter Toilet Pressure and Reported Deployment
+    - Aggregate and Sitewise Requirement Comparison
+    - Water Status and Equity-Weighted Pressure Summary
+    interpretation: Observed occupancy determines benchmark requirements and reported temporary toilets determine
+      the provisional screen. Fixed stalls, toilet-car stall equivalents, wastewater operability, and service quality
+      are unobserved, so the screen is not a total functional-capacity deficit.
+  - levelName: Conditional rebalancing and service packages
+    levelAim: Test whether reported temporary-toilet redistribution could reduce Yatsushiro screening imbalances
+      under explicit mobility assumptions.
+    inputs:
+    - Latitude
+    - Longitude
+    - Shelter Location Resolution
+    - Evacuees
+    - Temporary Toilets Installed
+    - Toilet Cars
+    - Water Status
+    - Estimated Female Evacuees
+    - Estimated Functional Support Evacuees
+    - Estimated Female Functional Support Evacuees
+    - Accessible Unit Parity Screen
+    modelOrMethod: Apply a priority-constrained nearest-donor algorithm with integer flows \(x_{ij}^{(m)}\), donor
+      protection, unit conservation, and residual shortfall \(U_j^{(m)}\). Compare no movement, zero-occupancy donors,
+      and full reported-surplus mobility; allocate incremental general units approximately 3:1 to women and men
+      while keeping accessible parity separate.
+    outputs:
+    - Provisional Toilet Rebalancing and Mobility-Scenario Performance
+    - Gender and Functional-Support Toilet Service Packages
+    - Shelter-Level Provisional Toilet Rebalancing Plan
+    - Priority Shelter Gender and Accessible Service Packages
+    - Toilet Rebalancing Scenario Performance and Robustness
+    interpretation: Scenario assumptions determine eligible donor stock and apparent coverage. Movements and service
+      packages remain conditional on equipment, road, setup, containment, waste collection, lighting, locks, handwashing,
+      menstrual-waste support, and accessible-route verification; they are not dispatch orders or a global optimum.
