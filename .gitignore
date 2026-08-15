@@ -5,6 +5,8 @@
 CLAUDE.md
 AGENTS.md
 /article
+.DS_Store
+.tmp/
 
 # Python runtime artifacts
 __pycache__/
