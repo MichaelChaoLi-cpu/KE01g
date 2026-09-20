@@ -7,7 +7,17 @@ AGENTS.md
 /article
 .DS_Store
 .tmp/
+/.frame-control/
 
 # Python runtime artifacts
 __pycache__/
 *.py[cod]
+
+# BEGIN manuscript revision workspace
+.codex/skills/
+Rev/*
+/Rev/docs/
+!Rev/revision/
+Rev/revision/*
+!Rev/revision/response-draft.md
+# END manuscript revision workspace
