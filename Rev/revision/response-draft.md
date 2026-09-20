@@ -141,10 +141,13 @@ The authors must add an explicit theoretical discussion in Section 5.3 (Operatio
 They should explain the practical trade-offs: while robust optimization models prescribe a single "optimal" dispatch plan under assumed uncertainty sets, a descriptive decision-support framework avoids the "optimizer's curse" by providing field managers with defensible sensitivity bounds and verification sequences when operational data (e.g., fixed toilet operability, sewer status, road access) cannot be verified in real time.
 
 **Response:**
-[Response to be completed.]
+Thank you for requesting a clearer justification of the framework choice. The revised Conditional Rebalancing and Service Packages subsection and Operational and Evidence Uncertainty discussion explain why the study uses transparent, conditional screening before dispatch, while explicitly acknowledging the absence of global optimality and probabilistic performance guarantees. The limitation concerns the empirical justification of operational inputs, not the mathematical ability of optimization methods to represent uncertainty. We do not claim that optimization necessarily produces only one dispatch plan or that a heuristic inherently avoids the optimizer's curse; the adjacent discussion recognizes complementary robust, stochastic and distributionally robust approaches.
 
-"[Exact revised manuscript text]"
-(Page XX, Lines XX–XX)
+"The ordering makes the priority given to screened need explicit rather than estimating a trade-off between need and transport cost. Each mobility case is a conditional inventory calculation, not a probability-weighted forecast or a guarantee of feasible deployment."
+(Page 21, Lines 421–424)
+
+"We therefore select deterministic scenario bounds and a priority-constrained heuristic to support verification before dispatch, rather than to prescribe an optimal allocation from unverified operational inputs. The available records do not establish the joint operational states of toilets, sewers, waste removal and road access, or provide a validated basis for assigning their probabilities. This limits the empirical justification of an optimization model, not the mathematical possibility of formulating one. Our approach makes selected assumptions and their conditional consequences inspectable, at the cost of providing neither global optimality nor probabilistic performance guarantees. Its bounds apply only to the declared scenarios and need not contain the realized outcome. Once operational inputs and decision objectives are verified, formal optimization can complement this screening stage; the present analysis does not test whether its heuristic outperforms such alternatives."
+(Pages 32–33, Lines 681–692)
 
 ## Comment 6
 
@@ -205,4 +208,3 @@ Thank you for recommending these publications. The revised Discussion incorporat
 
 "Humanitarian prepositioning models already combine demand-point priorities, road vulnerability and lateral transshipment. Other relief-delivery models link two-stage stochastic location and inventory decisions to routing models that exclude unavailable links. Progressive supply models carry unused resources forward and use transshipment to address imbalances in unmet demand across shelters. Two-layer evolutionary-game research examines a different aspect of redistribution, namely how incentives and interactions between shelters and affected people shape cooperation (Anvari et al., 2023; Chen et al., 2026; Guo & Nishimura, 2026; Qezelbash-Chamak et al., 2024)."
 (Page 34, Lines 720–727)
-
