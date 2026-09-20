@@ -1,0 +1,208 @@
+# Response to reviewers and editors of manuscript number [MANUSCRIPT ID]
+
+# Revision Summary
+
+[Opening acknowledgment and summary of completed revisions to be added after revision.]
+
+- [Revision summary item 1.]
+- [Revision summary item 2.]
+- [Revision summary item 3.]
+- [Revision summary item 4.]
+- [Revision summary item 5.]
+
+[Closing acknowledgment.]
+
+# Editor
+
+Thank you for submitting your manuscript to Natural Hazards Research.  
+
+I have completed my evaluation of your manuscript. The reviewers recommend reconsideration of your manuscript following revision. I invite you to resubmit your manuscript after addressing the comments below. Please resubmit your revised manuscript by Oct 01, 2026.
+  
+When revising your manuscript, please consider all issues mentioned in the reviewers' comments carefully: please outline in a cover letter every change made in response to their comments and provide suitable rebuttals for any comments not addressed. Please note that your revised submission may need to be re-reviewed.      
+
+To submit your revised manuscript, please log in as an author at https://www.editorialmanager.com/nhres/, and navigate to the "Submissions Needing Revision" folder under the Author Main Menu. 
+
+Natural Hazards Research values your contribution and I look forward to receiving your revised manuscript.
+
+**Response:**
+[Response to be completed.]
+
+"[Exact revised manuscript text]"
+(Page XX, Lines XX–XX)
+
+# Reviewer 1
+
+## Overall Comment
+
+This is a methodologically rigorous and highly practical study. The authors directly confront the real-world challenge of incomplete data and heterogeneous evidence quality in disaster response. Their core contribution lies in constructing a reproducible, tiered decision-making framework that translates equity (gender and functional support) into actionable spatial screening and prioritization tools, setting a benchmark for disaster management research.
+
+**Response:**
+[Response to be completed.]
+
+"[Exact revised manuscript text]"
+(Page XX, Lines XX–XX)
+
+## Comment 1
+
+Before publication, I recommend further strengthening the following issue: in spatial analyses, given that road damage and bridge collapse are common in post-earthquake environments, the correlation between straight-line distance and actual traversable routes and travel time may be extremely poor. Although this limitation is acknowledged in the discussion, if feasible, conducting a rough estimation of transfer routes would substantially enhance the practical relevance of this part of the analysis.
+I look forward to seeing the revised final version.
+
+**Response:**
+[Response to be completed.]
+
+"[Exact revised manuscript text]"
+(Page XX, Lines XX–XX)
+
+
+# Reviewer 2
+
+## Overall Comment
+
+GENERAL EVALUATION AND OVERVIEW
+
+The manuscript addresses a critical, policy-relevant, and timely topic in urban disaster risk management and public health: equity-sensitive planning and allocation of emergency shelter sanitation infrastructure (WASH) under severe data incompleteness following a major seismic event. The thematic scope aligns exceptionally well with the Aims and Scope of Natural Hazards Research, specifically addressing "Disaster vulnerability, hazard, and risk assessment and management" as well as "Natural Hazards and human society."
+
+The study has notable strengths, including a high-fidelity empirical grounding that combines a 2026 post-earthquake shelter snapshot with 125-meter residential census meshes and administrative Long-Term Care (LTC) registries in Kumamoto and Yatsushiro Cities. Furthermore, the mathematical isolation of the "spatial fragmentation increment" demonstrates why aggregate citywide planning underestimates localized toilet requirements due to integer indivisibility.
+However, the manuscript currently suffers from major structural, formatting, and theoretical limitations. The Introduction is excessively long and fragmented; there is no standalone Literature Review section or Literature Positioning Table; the mathematical decision framework lacks a visual flowchart; and the authors fail to contrast their descriptive scenario-based heuristics with established methodologies for optimization under uncertainty (such as Robust Optimization, Stochastic Programming, Distributionally Robust Optimization, Fuzzy Programming, or Monte Carlo Simulation).
+Therefore, I recommend major revision. The authors must address the following mandatory revisions before the manuscript can be considered for publication.
+
+MAJOR REVISIONS REQUIRED
+
+**Response:**
+[Response to be completed.]
+
+"[Exact revised manuscript text]"
+(Page XX, Lines XX–XX)
+
+## Comment 1
+
+1. Mandatory Journal Format Compliance and Citation Restructuring
+The manuscript currently violates several explicit formatting requirements specified in the journal's Guide for Authors:
+In-Text Citation Style (Severe Violation): The manuscript uses Harvard-style author-year in-text citations (e.g., Cabinet Office, 2024; Deelstra & Bristow, 2020). The journal requires a numbered, square-bracket style (Vancouver style), ordered sequentially by appearance in the text. All citations must be re-formatted, and the reference list must be converted to a numbered sequence.
+Structured Abstract Requirement: The journal explicitly mandates a Structured Abstract with explicit sub-headings (e.g., Background/Purpose, Methods, Findings, Conclusions) within a 250-word limit for Full-Length Research Articles. The authors must convert their current single-block abstract into this required structured format.
+Numbered Section Headings: Section headings must follow a clear decimal hierarchy (e.g., 1. Introduction, 1.1. Urban Shelter Sanitation..., 1.1.1. ...) as stipulated in the journal instructions.
+Mandatory Declarations Sections: The authors must include explicit, separate text headings prior to the bibliography for: (a) Authors' Contribution (CRediT Taxonomy), (b) Ethics Statement, (c) Declaration of Competing Interests (COI), and (d) Acknowledgments.
+
+**Response:**
+[Response to be completed.]
+
+"[Exact revised manuscript text]"
+(Page XX, Lines XX–XX)
+
+## Comment 2
+
+2. Streamlining the Introduction ("The Introduction Formula")
+The current Introduction spans nearly 5 pages across three unnumbered subheadings, creating an unnecessarily verbose opening that dilutes the central research question. The authors are required to condense and streamline the Introduction into approximately 1.5 to 2 pages (5 cohesive paragraphs) following Keith Head's established "Introduction Formula" (Hook, Puzzle, Do, Findings, Roadmap):
+Paragraph 1 (The Hook): Define shelter sanitation as a critical urban utility-continuity problem and explain why spatial disaggregation matters.
+Paragraph 2 (The Puzzle / The Gap): Highlight the conflict between national equity guidelines and real-world "dirty/incomplete" disaster databases, explaining why prescriptive optimization models suffer from the "optimizer's curse."
+Paragraph 3 (The Do): Introduce the proposed two-tiered analytical framework and how it handles incomplete evidence without fabricating observations.
+Paragraph 4 (The Findings): Summarize key quantitative metrics (e.g., the +64.3% fragmentation penalty in Kumamoto, the 31-unit shortfall in Yatsushiro, and the rebalancing sensitivity bounds).
+Paragraph 5 (The Roadmap): Outline the structural organization of the remaining paper.
+
+**Response:**
+[Response to be completed.]
+
+"[Exact revised manuscript text]"
+(Page XX, Lines XX–XX)
+
+## Comment 3
+
+3. Establishment of a Dedicated "Literature Review" Section and Positioning Table
+The manuscript currently lacks a dedicated, systematic Literature Review. To properly ground the study within the state of the art, the authors must insert a new section—2. Literature Review—organized into three structured sub-domains:
+2.1. Disaster WASH Logistics and Planning Under Uncertainty: Discuss secondary need-estimation frameworks (e.g., Rye & Aktas, 2022), multiobjective conflict shelter models (e.g., Hallak et al., 2019), and risk zonation (e.g., Nekooie et al., 2022).
+2.2. Social Equity, Gender, and Disability in Emergency Sanitation: Review literature on intersectional WASH vulnerabilities, menstrual health invisibility, older adult exclusion, and socioeconomic impacts (e.g., Al Omari et al., 2024; Lima et al., 2026; Wilbur et al., 2022; Yadav & Barve, 2017).
+2.3. Emergency Resource Reallocation and Lateral Transshipment: Review recent advances in humanitarian lateral transshipment, evolutionary game cooperation, progressive supply mechanisms, and two-stage allocation models (e.g., Anvari et al., 2023; Chen et al., 2026; Guo & Nishimura, 2026; Qezelbash-Chamak et al., 2024; Wang et al., 2024).
+Literature Positioning Table (Mandatory): To close this section, the authors must present a formal Literature Positioning Table comparing their work against key published papers across parameters such as: Decision Hierarchy, Social Equity Metrics, Uncertainty Handling, Lateral Reallocation Modeling, and Focus on Incomplete Real-World Operational Data.
+
+**Response:**
+[Response to be completed.]
+
+"[Exact revised manuscript text]"
+(Page XX, Lines XX–XX)
+
+## Comment 4
+
+4. Methodological Flowchart and Graphical Abstract Requirement
+The manuscript presents 30 mathematical equations across several subsections, making it difficult for readers to visualize the model's sequential execution.
+Methodological Flowchart: The authors must add an explicit visual flowchart (to be placed as the new Figure 1 or at the beginning of Section 3) mapping the multi-stage decision pipeline: from census mesh/LTC inputs, through synthetic equity proxies, sitewise fragmentation calculations, minimax priority rankings, to nearest-donor rebalancing heuristics.
+Graphical Abstract: The journal strongly encourages submitting a Graphical Abstract. Authors should format this new methodological flowchart to the journal's exact specifications (531 x 1328 pixels, JPEG/TIFF/PDF format) and upload it as a separate file in the submission system.
+
+**Response:**
+[Response to be completed.]
+
+"[Exact revised manuscript text]"
+(Page XX, Lines XX–XX)
+
+## Comment 5
+
+5. Justification of Framework Choice vs. Optimization Under Uncertainty
+When dealing with incomplete, noisy, or "dirty" real-world data, the field of Operations Research provides robust mathematical programming techniques specifically designed for optimization under uncertainty—such as Robust Optimization, Two-Stage Stochastic Programming (TSSP), Distributionally Robust Optimization (DRO), Fuzzy Mathematical Programming, Grey Numbers, and Monte Carlo Simulation.
+The authors must add an explicit theoretical discussion in Section 5.3 (Operational and Evidence Uncertainty) justifying why they deliberately selected a descriptive, priority-constrained heuristic and deterministic scenario bounds over formal mathematical optimization under uncertainty.
+They should explain the practical trade-offs: while robust optimization models prescribe a single "optimal" dispatch plan under assumed uncertainty sets, a descriptive decision-support framework avoids the "optimizer's curse" by providing field managers with defensible sensitivity bounds and verification sequences when operational data (e.g., fixed toilet operability, sewer status, road access) cannot be verified in real time.
+
+**Response:**
+[Response to be completed.]
+
+"[Exact revised manuscript text]"
+(Page XX, Lines XX–XX)
+
+## Comment 6
+
+6. Minor Methodological and Reporting Enhancements
+Table of Nomenclature: To improve mathematical legibility, the authors should include a comprehensive Table of Nomenclature in the Appendix listing all sets, indices, parameters, synthetic variables, and decision indicators used in Equations 1-30.
+Quantitative Conclusions: Expand the Conclusion section to explicitly reiterate key synthetic demographic metrics (e.g., the Base functional-support demand of 30.6 persons at Yatsushiro Arena) alongside the logistical rebalancing metrics for a more balanced summary of results.
+
+**Response:**
+[Response to be completed.]
+
+"[Exact revised manuscript text]"
+(Page XX, Lines XX–XX)
+
+## Comment 7
+
+REQUIRED REFERENCES TO BE ADDED TO THE BIBLIOGRAPHY
+The authors must cite the following relevant publications within the text (using the required numbered citation format) and include their full details in the reference list:
+
+Al Omari, S., Honein-AbouHaidar, G., & Sibai, A. M. (2024). By the numbers and in their own words: A mixed methods study of unmet needs and humanitarian inclusion of older Syrian refugees in Lebanon. PLOS ONE, 19(7), e0302082. https://doi.org/10.1371/journal.pone.0302082
+
+Anvari, M., Anvari, A., & Boyer, O. (2023). A prepositioning model for prioritized demand points considering lateral transshipment. Journal of Humanitarian Logistics and Supply Chain Management, 13(4), 433-455. https://doi.org/10.1108/JHLSCM-01-2023-0005
+
+Chen, Y., Xu, G., Feng, S., & Wang, C. (2026). Post-disaster resource redistribution and cooperation evolution based on two-layer network evolutionary games. Chaos, 36(2), 023107. https://doi.org/10.1063/5.0312287
+
+Guo, Y., & Nishimura, E. (2026). Distribution strategy for relief supplies with consumption frequency: Under a Tokyo-area disaster scenario. Progress in Disaster Science, 31, 100639. https://doi.org/10.1016/j.pdisas.2026.100639
+
+Hallak, J., Koyuncu, M., & Miç, P. (2019). Determining shelter locations in conflict areas by multiobjective modeling: A case study in northern Syria. International Journal of Disaster Risk Reduction, 38, 101202. https://doi.org/10.1016/j.ijdrr.2019.101202
+
+Kamyabniya, A., Noormohammadzadeh, Z., Sauré, A., & Patrick, J. (2021). A robust integrated logistics model for age-based multi-group platelets in disaster relief operations. Transportation Research Part E: Logistics and Transportation Review, 152, 102371. https://doi.org/10.1016/j.tre.2021.102371
+
+Lima, I. A. S., Nicacio, W., Ducatti, A. P. S., Bertazzo, T. R., & de Brito, I. (2026). Bridging standards and capacities: an institutional analysis of the 2022 flood response in the Médio Mearim region, Brazil. Disaster Prevention and Management, 35(3), 276-290. https://doi.org/10.1108/DPM-10-2025-0347
+
+Nekooie, M. A., Attari, M., Ghaffariankolahi, A., & Rajai, Y. (2022). Risk assessment framework for the supply of water during a crisis. Proceedings of the Institution of Civil Engineers - Water Management, 176(5), 261-276. https://doi.org/10.1680/jwama.21.00072
+
+Noyan, N., & Kahvecioglu, G. (2018). Stochastic last mile relief network design with resource reallocation. OR Spectrum, 40(1), 187-231. https://doi.org/10.1007/s00291-017-0498-7
+
+Qezelbash-Chamak, J., Badamchizadeh, S., & Seifi, A. (2024). A fast-response mathematical programming approach for delivering disaster relief goods: an earthquake case study. Transportation Letters, 16(9), 1091-1114. https://doi.org/10.1080/19427867.2023.2270238
+
+Rye, S., & Aktas, E. (2022). A Multi-Attribute Decision Support System for Allocation of Humanitarian Cluster Resources Based on Decision Makers' Perspective. Sustainability, 14(20), 13423. https://doi.org/10.3390/su142013423
+
+Wang, D., Yang, K., Yang, L., & Li, S. (2024). Distributional robustness and lateral transshipment for disaster relief logistics planning under demand ambiguity. International Transactions in Operational Research, 31(3), 1736-1761. https://doi.org/10.1111/itor.13227
+
+Wilbur, J., Clemens, F., Sweet, E., Banks, L. M., & Morrison, C. (2022). The inclusion of disability within efforts to address menstrual health during humanitarian emergencies: A systematized review. Frontiers in Water, 4, 983789. https://doi.org/10.3389/frwa.2022.983789
+
+Yadav, D. K., & Barve, A. (2017). Analysis of socioeconomic vulnerability for cyclone-affected communities in coastal Odisha, India. International Journal of Disaster Risk Reduction, 22, 387-396. https://doi.org/10.1016/j.ijdrr.2017.02.003
+
+**Response:**
+Thank you for recommending these publications. The revised Discussion incorporates the suggested literature on inclusive humanitarian assistance, planning with incomplete operational evidence, optimization under uncertainty, and relief-resource redistribution. Thirteen publications are newly cited and included in the reference list; Hallak et al. (2019), which was already cited in the Introduction and listed in the references, is retained. The revised passages are quoted below.
+
+"Research on older Syrian refugees in Lebanon identifies unmet needs and gaps in age-inclusive humanitarian assistance, including access to suitable bathing facilities. A systematized review of menstrual health in emergencies identifies limited participation by women and girls with disabilities and barriers to accessible WASH facilities. Household-based vulnerability research in coastal Odisha also identifies toilet provision and shelter distance among factors relevant to disaster vulnerability (Al Omari et al., 2024; Wilbur et al., 2022; Yadav & Barve, 2017)."
+(Page 29, Lines 613–620)
+
+"Humanitarian decision-support research combines historical needs estimates with decision-maker preferences and resource-allocation optimization when real-time data are unavailable. Emergency-water planning also combines disruption scenarios with spatial risk zoning to identify support and supply locations. An institutional study of flood response in Brazil identifies information asymmetries and fragmented coordination as constraints on implementing humanitarian standards (Lima et al., 2026; Nekooie et al., 2022; Rye & Aktas, 2022)."
+(Page 32, Lines 670–676)
+
+"Formal optimization offers complementary ways to represent uncertainty: integrated platelet logistics models use robust optimization, while last-mile relief network design uses two-stage stochastic programming to address accessibility and equitable distribution. Distributionally robust relief planning also combines lateral transshipment with demand ambiguity and reports mitigation of the optimizer's curse relative to traditional stochastic programming. These approaches do not support a blanket claim that a descriptive heuristic is inherently protected against errors in uncertain inputs (Kamyabniya et al., 2021; Noyan & Kahvecioğlu, 2018; Wang et al., 2024)."
+(Pages 32–33, Lines 690–697)
+
+"Humanitarian prepositioning models already combine demand-point priorities, road vulnerability and lateral transshipment. Other relief-delivery models link two-stage stochastic location and inventory decisions to routing models that exclude unavailable links. Progressive supply models carry unused resources forward and use transshipment to address imbalances in unmet demand across shelters. Two-layer evolutionary-game research examines a different aspect of redistribution, namely how incentives and interactions between shelters and affected people shape cooperation (Anvari et al., 2023; Chen et al., 2026; Guo & Nishimura, 2026; Qezelbash-Chamak et al., 2024)."
+(Page 34, Lines 720–727)
+
