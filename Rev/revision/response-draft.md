@@ -167,10 +167,17 @@ Methodological Flowchart: The authors must add an explicit visual flowchart (to 
 Graphical Abstract: The journal strongly encourages submitting a Graphical Abstract. Authors should format this new methodological flowchart to the journal's exact specifications (531 x 1328 pixels, JPEG/TIFF/PDF format) and upload it as a separate file in the submission system.
 
 **Response:**
-[Response to be completed.]
+Thank you for this suggestion. The revised manuscript includes a methodological flowchart as the new Figure 1, introduced at the beginning of the Analytical Framework. It connects emergency records, census age–sex mesh data, disability and long-term-care statistics, and planning assumptions to the implemented screening and reallocation procedures. The parallel branches distinguish synthetic demand estimation from sitewise requirement calculations, and distinguish robust verification priorities from the operational recipient ordering used in conditional nearest-donor rebalancing. The workflow ends with conditional service packages rather than presenting field verification as a completed analytical stage.
 
-"[Exact revised manuscript text]"
-(Page XX, Lines XX–XX)
+The new introductory sentence and figure note state:
+
+"Figure 1 summarizes the analytical workflow, separating observed evidence, synthetic demand scenarios, verification screens, and conditional resource reallocation."
+(Page 14, Lines 281–282)
+
+"Municipality screening covers 11 municipalities, shelter demand scenarios cover 53 matched shelters in Kumamoto and Yatsushiro Cities, and operational pressure and conditional rebalancing analyses concern Yatsushiro. The diagram separates synthetic demand estimation, sitewise requirement calculations, equity verification priorities, and conditional inventory transfers. Functional capacity remains unobserved; conditional transfers do not establish operational feasibility."
+(Page 42, Lines 881–885)
+
+A separate graphical abstract combines the data inputs and analytical sequence with the conditional reallocation map and mobility-scenario outcomes. It uses the study's result graphics to communicate the planning framework and the dependence of reallocation outcomes on mobility assumptions, while retaining the distinction between conditional transfers and verified service provision.
 
 ## Comment 5
 
