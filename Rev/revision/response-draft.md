@@ -48,10 +48,49 @@ Before publication, I recommend further strengthening the following issue: in sp
 I look forward to seeing the revised final version.
 
 **Response:**
-[Response to be completed.]
+Thank you for this constructive suggestion. We agree that straight-line proximity cannot establish traversability or travel time after an earthquake. The revised manuscript adds a nominal road-network sensitivity analysis, maps estimated transfer paths in Figure 4b, expands the distance comparison in Table 9, and clarifies the remaining operational limitations in the Discussion. The analysis uses a network constructed from 2024 road centerlines and distinguishes two comparisons: evaluating the original allocation on the road network, and selecting donors by network distance while holding shelter demand, inventories, recipient priorities and mobility scenarios fixed. Under full mobility, evaluating the baseline allocation on the network increases the unit-weighted mean distance from 2.15 to 2.99 km; network-based donor selection gives 2.66 km and changes the donor mix at four recipient shelters. These are nominal route-length estimates, not estimates of post-earthquake travel time. The available evidence does not validate road closures, bridge damage or vehicle access, so we do not present the routes as dispatch-ready.
 
-"[Exact revised manuscript text]"
-(Page XX, Lines XX–XX)
+The data description now distinguishes the two spatial sensitivities:
+
+"We therefore preserve temporary toilets and toilet cars as separate fields, exclude cars and fixed stalls from the temporary-toilet-only shortfall, and compare great-circle and nominal road-network distances as spatial sensitivities."
+(Page 9, Lines 163–165)
+
+The Analytical Framework identifies the original donor rule as the baseline and explains how road lengths and off-network connectors are treated:
+
+"In the baseline allocation, the eligible donor with the shortest great-circle distance is selected for each recipient."
+(Page 20, Lines 418–420)
+
+"Each Yatsushiro point projects onto its nearest edge, which is split at the projection to preserve partial-edge lengths. We compute shortest undirected network lengths and report geometric off-network connectors separately rather than treating them as verified access."
+(Page 21, Lines 427–430)
+
+The Results distinguish mapping the baseline allocation from changing donor selection:
+
+"The baseline allocation selects nearest eligible donors by great-circle distance after recipient priority is established; panel b traces the corresponding nominal shortest road paths without changing that allocation. Several endpoints remain approximate district anchors, and geometric connectors are not verified access routes."
+(Page 27, Lines 558–561)
+
+"Evaluating the same allocation on the nominal road network increases the unit-weighted mean to 2.99 kilometers. Selecting donors by network length instead changes the donor mix at four recipients, reassigns nine units and gives a mean network length of 2.66 kilometers, with mean geometric connectors of 0.09 kilometers reported separately. One reassigned unit links records with shared coordinates and therefore has zero modeled network length; this does not establish a zero-distance physical transfer. Transferred quantities and residual shortfalls remain unchanged in all three mobility cases because the nominal network connects all sites and the comparison imposes no distance or travel-time budget. These results show sensitivity of donor selection and distance, not verified feasibility under earthquake damage."
+(Page 27, Lines 570–579)
+
+Figure 4b now displays nominal road paths, with the distinction between network paths and unverified access stated in its note:
+
+"Panel b traces nominal shortest road paths for the baseline full reported-surplus allocation, whose donors are selected by great-circle distance; dashed connectors indicate unverified off-network access, and anchor endpoints remain approximate."
+(Page 43, Lines 34–37)
+
+Table 9 reports baseline great-circle distances, network distances on the same links, network-selected distances and donor reassignment. Its note explicitly qualifies the shared-coordinate case and the unchanged inventory outcomes:
+
+"The network-selected full-mobility case includes one unit between records with shared coordinates and zero modeled road length, not a verified zero-distance transfer. Quantities and coverage are unchanged across distance rules under the connected nominal network and absence of a distance or travel-time budget."
+(Page 63, Lines 5–8)
+
+The Discussion preserves the requirement for operational verification before deployment:
+
+"The nominal road-distance sensitivity does not replace verification of road access and vehicle constraints before dispatch."
+(Page 35, Lines 754–755)
+
+"The nominal road network adds route-length information but does not establish post-earthquake traversability, vehicle access, setup requirements or ownership. District-anchor fallbacks and shared coordinates introduce further location uncertainty, including a zero-length modeled transfer that cannot be interpreted as physical co-location. Operational routing and equipment verification are needed before transfers are authorized."
+(Page 37, Lines 793–797)
+
+"Further routing analysis should incorporate verified road availability, vehicle constraints, installation times, and waste-service destinations."
+(Page 38, Lines 811–812)
 
 
 # Reviewer 2
