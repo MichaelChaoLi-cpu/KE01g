@@ -202,10 +202,58 @@ Table of Nomenclature: To improve mathematical legibility, the authors should in
 Quantitative Conclusions: Expand the Conclusion section to explicitly reiterate key synthetic demographic metrics (e.g., the Base functional-support demand of 30.6 persons at Yatsushiro Arena) alongside the logistical rebalancing metrics for a more balanced summary of results.
 
 **Response:**
-[Response to be completed.]
+Thank you for this helpful suggestion. Appendix C now includes Table C1, which defines the sets, indices, parameters, synthetic quantities, indicators and operators used in Equations 1–30, with their units or domains and equation references. The Analytical Framework also clarifies definitions beside the relevant equations, including reused symbols, denominator restrictions and the distinction between observed inventories and synthetic demand. The Conclusions now report the Base functional-support estimate for Yatsushiro Arena alongside the conditional rebalancing results, while retaining their interpretation limits.
 
-"[Exact revised manuscript text]"
-(Page XX, Lines XX–XX)
+Appendix C introduces the nomenclature table as follows:
+
+"Table C1 defines the notation used in Equations 1–30. Population estimates with hats or tildes are synthetic quantities and may be fractional; reported evacuee counts are observations. Toilet requirements and transfer quantities are integer units. Reused letters are distinguished by their indices and equation context."
+(Page 3, Lines 29–32)
+
+The Analytical Framework cites the table and clarifies the notation as follows:
+
+"Appendix Table C1 lists the notation used throughout Equations 1–30."
+(Page 14, Lines 291–292)
+
+"All three shares use total municipality residential population as the denominator; hatted quantities are expected persons rather than observed subgroup counts."
+(Page 15, Lines 300–302)
+
+"We allocate each administrative need component to mesh-sex cells using age-weighted population, bound the allocation by sex-specific mesh population, and redistribute any remaining quantity among cells with capacity to preserve the city total."
+(Page 16, Lines 328–330)
+
+"Here, $D_{mg}$ and $C_{mg}$ are the calibrated physical-disability and long-term-care components after capping and redistribution, and $U_{mg}^{(s)}$ is their population-capped union, all in persons."
+(Page 17, Lines 345–347)
+
+"The set $\mathcal{C}_{j}$ contains the meshes assigned to shelter $j$; $F_{m}$ and $N_{m}$ are female and total mesh populations."
+(Page 17, Lines 354–356)
+
+"Each category must have a common operability status; mixed-status categories are subdivided before summation."
+(Page 19, Lines 392–394)
+
+"The group index $g$ in Equations 12–13 refers to the service users being assessed, rather than only the residential sex categories used in Equations 7–9."
+(Page 20, Lines 413–414)
+
+"Here, $V_{jt}$ counts reported toilet vehicles, not their stall equivalents, and $\mathbb{I( \cdot )}$ equals 1 when its condition is true and 0 otherwise."
+(Page 22, Lines 459–460)
+
+"The conditions are evaluated from top to bottom, and the first satisfied condition determines $P_{jt}$; a lower tier denotes earlier verification. The water-severity score $W_{jt}$ is ordinal, not a measure of physical toilet capacity."
+(Page 23, Lines 475–477)
+
+"In Equations 26–30, $m$ denotes the mobility case (none, zero or full), rather than the residential mesh index used earlier, and the time subscript is suppressed for the common operational snapshot."
+(Page 25, Lines 520–522)
+
+"The variable $x_{ij}^{(m)}$ is the nonnegative integer number of temporary-toilet units transferred from donor $i$ to recipient $j$; the sums range over modeled donors and recipients, and self-transfers are excluded."
+(Page 25, Lines 532–534)
+
+"In this equation, $A_{j}$ denotes additions rather than the water category in Equation 22; integer rounding means that a small addition need not have an exact 3:1 ratio."
+(Page 27, Lines 572–573)
+
+"Its denominator covers only initially shortfall-positive shelters and must be positive."
+(Page 27, Lines 581–582)
+
+The Conclusions now state:
+
+"At Yatsushiro Arena, Base synthetic demand is 30.6 persons requiring functional support, including 18.8 women; these estimates describe planning demand rather than observed shelter composition. Across Yatsushiro, the temporary-toilet-only shortfall is 31 units without rebalancing. Restricting donors to zero-occupancy shelters transfers 5 units and leaves 26 unresolved, whereas full reported-surplus mobility transfers 31 units and eliminates this inventory screen, conditional on the assumed availability of movable units."
+(Pages 42–43, Lines 924–930)
 
 ## Comment 7
 
