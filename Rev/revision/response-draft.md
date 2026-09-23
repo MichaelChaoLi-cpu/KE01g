@@ -1,16 +1,17 @@
-# Response to reviewers and editors of manuscript number [MANUSCRIPT ID]
+# Response to reviewers and editors of manuscript number NHRES-D-26-00277
 
 # Revision Summary
 
-[Opening acknowledgment and summary of completed revisions to be added after revision.]
+We thank the editor and reviewers for their careful assessment and constructive recommendations. The revised manuscript includes the following changes:
 
-- [Revision summary item 1.]
-- [Revision summary item 2.]
-- [Revision summary item 3.]
-- [Revision summary item 4.]
-- [Revision summary item 5.]
+- **Spatial analysis:** Added nominal road-network sensitivity analysis and clarified its operational limitations.
+- **Article structure:** Streamlined the Introduction and added a dedicated Literature Review and positioning table.
+- **Methodological positioning:** Clarified the relationship between scenario-based screening and optimization under uncertainty.
+- **Visual presentation:** Added a methodological flowchart and graphical abstract.
+- **Analytical clarity:** Clarified equation definitions, added an Appendix nomenclature table, and strengthened the quantitative Conclusions.
+- **Manuscript presentation:** Added a structured abstract, numbered headings, and explicit author-contribution, ethics, and competing-interest statements.
 
-[Closing acknowledgment.]
+The point-by-point responses below describe the revisions and identify requests for which a different approach is retained. We appreciate the opportunity to revise the manuscript and hope that these changes address the reviewers’ principal concerns.
 
 # Editor
 
@@ -25,10 +26,7 @@ To submit your revised manuscript, please log in as an author at https://www.edi
 Natural Hazards Research values your contribution and I look forward to receiving your revised manuscript.
 
 **Response:**
-[Response to be completed.]
-
-"[Exact revised manuscript text]"
-(Page XX, Lines XX–XX)
+Thank you for the opportunity to revise our manuscript. We have carefully considered the reviewers’ comments and revised the manuscript accordingly. The Revision Summary outlines the principal changes, and the point-by-point responses below explain the revisions and any requests not adopted. We appreciate your consideration of the revised manuscript.
 
 # Reviewer 1
 
@@ -37,10 +35,7 @@ Natural Hazards Research values your contribution and I look forward to receivin
 This is a methodologically rigorous and highly practical study. The authors directly confront the real-world challenge of incomplete data and heterogeneous evidence quality in disaster response. Their core contribution lies in constructing a reproducible, tiered decision-making framework that translates equity (gender and functional support) into actionable spatial screening and prioritization tools, setting a benchmark for disaster management research.
 
 **Response:**
-[Response to be completed.]
-
-"[Exact revised manuscript text]"
-(Page XX, Lines XX–XX)
+Thank you for your positive assessment of the study’s methodological rigor and practical relevance. In response to your specific recommendation, the revised manuscript adds a nominal road-network sensitivity analysis and clarifies the distinction between estimated route lengths and verified post-earthquake accessibility. These changes and their remaining limitations are detailed in our response to Comment 1 below.
 
 ## Comment 1
 
@@ -108,10 +103,7 @@ Therefore, I recommend major revision. The authors must address the following ma
 MAJOR REVISIONS REQUIRED
 
 **Response:**
-[Response to be completed.]
-
-"[Exact revised manuscript text]"
-(Page XX, Lines XX–XX)
+Thank you for your careful assessment and constructive recommendations. The revised manuscript streamlines the Introduction, adds a dedicated Literature Review and positioning table, and presents the analytical workflow in a flowchart. It also clarifies the role and limitations of descriptive scenario-based screening relative to optimization under uncertainty. Further revisions include a structured abstract, numbered sections, explicit declarations, clearer notation, and a more quantitative synthesis of the findings. The responses below explain each change and identify where the revised manuscript retains a different approach.
 
 ## Comment 1
 
@@ -123,10 +115,62 @@ Numbered Section Headings: Section headings must follow a clear decimal hierarch
 Mandatory Declarations Sections: The authors must include explicit, separate text headings prior to the bibliography for: (a) Authors' Contribution (CRediT Taxonomy), (b) Ethics Statement, (c) Declaration of Competing Interests (COI), and (d) Acknowledgments.
 
 **Response:**
-[Response to be completed.]
+Thank you for identifying these formatting issues. The revised manuscript numbers the main sections from 1 to 7 and uses decimal numbering for the existing subsections. It also includes separate CRediT authorship contribution, ethics, and competing-interest statements, while retaining the Acknowledgments and funding information. Citations and the reference list now use a numerical format; the in-text citation numbers remain in parentheses rather than square brackets. The abstract now contains explicit Background, Methods, Findings, and Conclusions labels and totals 180 words, including these labels, while preserving its original substantive wording. The requested square-bracket citation delimiters are not adopted in the present revision.
 
-"[Exact revised manuscript text]"
-(Page XX, Lines XX–XX)
+The structured abstract reads:
+
+"Background: Post-earthquake sanitation is an urban utility-continuity problem because water, waste handling, deployable equipment, and safe access jointly determine whether toilets can serve shelter occupants. Methods: We combine an official prefectural snapshot of 81 open shelters and 3,585 evacuees with municipality screening and three residential-composition scenarios, then analyze 53 matched shelters in Kumamoto and Yatsushiro Cities. The framework separates observed occupancy and deployments from synthetic female and functional-support demand, accessible-unit parity screens, and conditional logistics. Findings: Separate rounding at each shelter raises prolonged-stay requirements from 93 to 112 units in Yatsushiro and from 14 to 23 units in Kumamoto. In Yatsushiro, reported temporary toilets imply a 31-unit shortfall across 11 shelters; the shortfall reaches zero only under an upper-bound scenario that permits all 72 reported surplus units to move, of which 31 are transferred. Conclusions: The results support targeted field verification, gender-responsive service packages, and conditional resource staging. They do not establish functional toilet capacity, accessible-toilet compliance, observed subgroup composition, or an optimal dispatch plan. Shelter sanitation policy should preserve site-level demand and verify utility and equipment operability before deployment."
+(Page 1, Lines 6–22)
+
+The numbered section hierarchy includes:
+
+"1 Introduction"
+(Page 3, Lines 28–28)
+
+"2 Literature Review"
+(Page 5, Lines 79–79)
+
+"2.1 Disaster WASH Logistics and Planning Under Uncertainty"
+(Page 5, Lines 80–80)
+
+"3 Study Context and Data"
+(Page 8, Lines 153–153)
+
+"4 Analytical Framework"
+(Page 13, Lines 258–258)
+
+"4.1 Municipality-Level Demand Screening"
+(Page 13, Lines 261–261)
+
+"5 Results"
+(Page 27, Lines 558–558)
+
+"5.1 Evidence Coverage and Scenario Calibration"
+(Page 27, Lines 559–559)
+
+"6 Discussion"
+(Page 33, Lines 702–702)
+
+"7 Conclusions"
+(Page 41, Lines 886–886)
+
+The author-contribution statements read:
+
+"Li Chao: Conceptualization, Methodology, Software, Formal analysis, Investigation, Data curation, Writing – original draft, Visualization."
+(Page 42, Lines 908–909)
+
+"Managi Shunsuke: Validation, Writing – review & editing, Resources, Supervision, Project administration, Funding acquisition."
+(Page 42, Lines 910–911)
+
+The Ethics statement reads:
+
+"Not applicable."
+(Page 42, Lines 913–913)
+
+The Declaration of competing interests reads:
+
+"The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper."
+(Page 42, Lines 915–916)
 
 ## Comment 2
 
@@ -166,10 +210,52 @@ The manuscript currently lacks a dedicated, systematic Literature Review. To pro
 Literature Positioning Table (Mandatory): To close this section, the authors must present a formal Literature Positioning Table comparing their work against key published papers across parameters such as: Decision Hierarchy, Social Equity Metrics, Uncertainty Handling, Lateral Reallocation Modeling, and Focus on Incomplete Real-World Operational Data.
 
 **Response:**
-[Response to be completed.]
+Thank you for this recommendation. The revised manuscript contains a dedicated Literature Review before Study Context and Data, organized around the three requested themes: disaster WASH logistics and planning under uncertainty; social equity, gender, and disability in emergency sanitation; and emergency resource reallocation and lateral transshipment. The review brings together relevant material previously dispersed across the Introduction and Discussion and adds an explicit comparison of the roles of needs estimation, uncertainty-aware optimization, equity evidence, and conditional resource transfers.
 
-"[Exact revised manuscript text]"
-(Page XX, Lines XX–XX)
+The first theme distinguishes population-demand estimates from verified service capacity and distinguishes uncertainty modeling from the empirical basis for its inputs:
+
+"These approaches address related but distinct tasks: estimating needs, locating facilities and allocating resources. For sanitation planning, the distinction matters because an estimate of population demand does not establish whether a reported toilet can provide usable service. The present study builds on this distinction by separating demand screening from the verification of functional capacity and deployable supply."
+(Page 6, Lines 105–109)
+
+"The relevant distinction is between specifying uncertainty within a model and establishing an empirical basis for its inputs."
+(Page 7, Lines 119–120)
+
+The equity discussion links gender and functional-support scenarios to assessment priorities without treating those scenarios as observed exclusion or verified accessible service:
+
+"They also distinguish the demand for support from the accessibility and quality of the facilities available. This distinction guides the use of female and functional-support scenarios in the present study: they identify priorities for observation, not measured experiences of exclusion or verified accessible service."
+(Page 8, Lines 145–148)
+
+The reallocation discussion clarifies the study's contribution and closes with an explicit reference to the positioning table:
+
+"Its contribution is a traceable screening step that can inform subsequent operational modeling, not a demonstrated improvement over optimized allocations. Table 1 summarises how the reviewed studies and the present study address planning decisions, equity, uncertainty, resource reallocation, and incomplete operational information."
+(Page 9, Lines 165–169)
+
+Table 1 compares eight published studies and the present study across decision hierarchy, equity dimensions or measures, uncertainty treatment, lateral reallocation, and treatment of incomplete operational data. It distinguishes assessment and review evidence from allocation models and identifies features not established in the inspected sources without treating them as absent.
+
+"Table 1. Positioning of the present study within disaster WASH and humanitarian resource planning."
+(Page 46, Lines 926–926)
+
+Following the relocation of literature, the Introduction retains the operational problem and its measurement limits:
+
+"These differences make an apparent inventory surplus conditional. National guidance likewise makes shelter-toilet planning dependent on water and sewer operability, waste handling, locks, lighting, safe access, menstrual hygiene, waiting conditions, women-to-men allocation, and separate accessible provision (Cabinet Office, 2024)."
+(Page 3, Lines 36–39)
+
+"Safe and accessible sanitation cannot be inferred from a total count of fixtures or temporary toilets (Meili et al., 2022)."
+(Page 3, Lines 45–47)
+
+The Discussion now connects the findings and their limitations directly to field verification, while the broader literature synthesis appears in the dedicated review:
+
+"This evidence supports population-disaggregated equity screening. In this study, residentially calibrated scenarios provide that screen but do not validate shelter composition."
+(Page 33, Lines 703–705)
+
+"The broader inventory balance in this study additionally requires operational checks that remain study recommendations. Until that confirmation, positive shortfall indicates a question to investigate and reported surplus indicates a possible resource to inspect, not a definitive deficit or transferable asset."
+(Page 35, Lines 752–755)
+
+"Future direct occupant counts can validate or replace the modeled shares and may reveal needs that the administrative components do not capture."
+(Page 36, Lines 777–779)
+
+"The nominal road-distance sensitivity does not replace verification of road access and vehicle constraints before dispatch. This staged approach may produce fewer feasible transfers than the upper bound, but it reduces the risk of shifting pressure from one shelter to another."
+(Page 37, Lines 801–804)
 
 ## Comment 4
 
