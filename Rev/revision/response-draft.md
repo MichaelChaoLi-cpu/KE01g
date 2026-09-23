@@ -139,10 +139,22 @@ Paragraph 4 (The Findings): Summarize key quantitative metrics (e.g., the +64.3%
 Paragraph 5 (The Roadmap): Outline the structural organization of the remaining paper.
 
 **Response:**
-[Response to be completed.]
+Thank you for this recommendation. The revised Introduction removes the three subsection headings and presents five cohesive paragraphs following the suggested sequence: the utility-continuity problem and spatial disaggregation, the equity–evidence gap, the two-tier analytical design, the principal quantitative findings, and the roadmap. The opening is now 536 words. It also clarifies that uncertainty-aware optimization can address specified uncertainty, while neither optimization nor descriptive scenarios eliminate the need to verify operating conditions. The revised text states:
 
-"[Exact revised manuscript text]"
-(Page XX, Lines XX–XX)
+"Dispersed occupancy requires service at individual shelters, so a pooled city total can conceal site-level requirements."
+(Page 3, Lines 33–34)
+
+"This creates a gap between equity-sensitive service standards and the evidence available for allocation. Optimizing over poorly established inputs can produce misleadingly precise recommendations; uncertainty-aware methods can address specified uncertainty, but neither optimization nor a descriptive heuristic removes the need to verify operating conditions."
+(Page 4, Lines 51–55)
+
+"The analytical design has two linked spatial tiers: municipality screening covers all 11 affected municipalities in the common snapshot, while shelter-level analysis covers 53 matched shelters in Kumamoto and Yatsushiro. It combines observed occupancy with synthetic gender and functional-support demand, sitewise requirements and verification priorities. Conditional rebalancing is restricted to Yatsushiro because its relevant operational fields are complete. Each stage retains its evidence class, separating observations, synthetic expectations and conditional service scenarios rather than treating numerical balance as functional sufficiency."
+(Page 4, Lines 59–66)
+
+"Separate shelter-level rounding raises prolonged-stay requirements from 14 to 23 units in Kumamoto, a 64.3% increase, and from 93 to 112 units in Yatsushiro. At Yatsushiro Arena, Base synthetic functional-support demand is 30.6 persons, including 18.8 women. Reported temporary toilets imply a 31-unit shortfall across 11 Yatsushiro shelters. Transfers restricted to zero-occupancy donors reduce this to 26 units; full reported-surplus mobility reduces it to zero through 31 transferred units."
+(Page 4, Lines 67–72)
+
+"The next section reviews disaster WASH planning, social equity and resource reallocation. We then describe the study context and data, present the analytical framework and report the results. The Discussion examines policy implications and evidence limitations, followed by the Conclusions."
+(Page 5, Lines 76–79)
 
 ## Comment 3
 
