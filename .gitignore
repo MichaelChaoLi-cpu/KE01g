@@ -17,7 +17,5 @@ __pycache__/
 .codex/skills/
 Rev/*
 /Rev/docs/
-!Rev/revision/
-Rev/revision/*
-!Rev/revision/response-draft.md
+/Rev/revision/
 # END manuscript revision workspace
